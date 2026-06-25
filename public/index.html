@@ -11,51 +11,55 @@
 
   <meta
     name="description"
-    content="BUETian Tech — Premium digital products with live prices and stock."
+    content="BUETian Tech Store — Premium digital products with live prices and stock."
   >
 
   <meta name="theme-color" content="#ffffff">
 
-  <title>BUETian Tech — Premium Digital Products</title>
+  <title>BUETian Tech Store — Premium Digital Products</title>
 
   <style>
     :root {
-      --bg: #ffffff;
+      --background: #ffffff;
       --surface: #ffffff;
       --surface-soft: #f7f8fb;
-      --surface-blue: #f5f8ff;
 
-      --text: #111827;
+      --text: #101828;
       --text-soft: #667085;
       --text-light: #98a2b3;
 
       --border: #e7eaf0;
-      --border-hover: #d2d7e1;
+      --border-hover: #d3d8e2;
 
       --primary: #2563eb;
-      --primary-dark: #1d4ed8;
+      --primary-hover: #1d4ed8;
 
       --success: #15803d;
-      --success-bg: #ecfdf3;
+      --success-background: #ecfdf3;
 
       --danger: #dc2626;
-      --danger-bg: #fff1f2;
+      --danger-background: #fff1f2;
+
+      --container-width: 1180px;
 
       --shadow-small:
         0 1px 2px rgba(15, 23, 42, 0.03),
-        0 4px 12px rgba(15, 23, 42, 0.04);
+        0 5px 15px rgba(15, 23, 42, 0.04);
 
       --shadow-large:
-        0 18px 45px rgba(15, 23, 42, 0.09);
-
-      --container: 1180px;
-      --radius-large: 24px;
-      --radius-medium: 16px;
-      --radius-small: 12px;
+        0 18px 48px rgba(15, 23, 42, 0.1);
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    /*
+      Product load হওয়ার পরে loading skeleton যেন
+      display:grid-এর কারণে আর দেখা না যায়।
+    */
+    [hidden] {
+      display: none !important;
     }
 
     html {
@@ -67,13 +71,14 @@
       margin: 0;
       min-height: 100vh;
       color: var(--text);
+
       background:
         radial-gradient(
-          circle at 50% -10%,
-          rgba(37, 99, 235, 0.08),
-          transparent 34rem
+          circle at 50% -8%,
+          rgba(37, 99, 235, 0.075),
+          transparent 35rem
         ),
-        var(--bg);
+        var(--background);
 
       font-family:
         Inter,
@@ -103,44 +108,58 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    button {
+      border: 0;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
     }
 
-    button {
-      border: 0;
-    }
-
     .container {
-      width: min(calc(100% - 32px), var(--container));
+      width: min(
+        calc(100% - 32px),
+        var(--container-width)
+      );
+
       margin-inline: auto;
     }
 
-    /* Header */
+    /* =========================
+       Header
+    ========================= */
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 50;
-      border-bottom: 1px solid rgba(231, 234, 240, 0.85);
+
+      border-bottom:
+        1px solid rgba(231, 234, 240, 0.85);
+
       background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+
+      backdrop-filter: blur(17px);
+      -webkit-backdrop-filter: blur(17px);
     }
 
     .navbar {
       min-height: 72px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 24px;
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
+
       gap: 11px;
+
       font-size: 20px;
       font-weight: 850;
       letter-spacing: -0.045em;
@@ -149,13 +168,26 @@
     .brand-mark {
       width: 40px;
       height: 40px;
+
+      flex: 0 0 auto;
+
       display: grid;
       place-items: center;
-      flex: 0 0 auto;
+
       border-radius: 13px;
+
       color: #ffffff;
-      background: linear-gradient(135deg, #111827, #2563eb);
-      box-shadow: 0 9px 22px rgba(37, 99, 235, 0.2);
+
+      background:
+        linear-gradient(
+          135deg,
+          #111827,
+          #2563eb
+        );
+
+      box-shadow:
+        0 9px 24px rgba(37, 99, 235, 0.2);
+
       font-size: 15px;
       font-weight: 900;
       letter-spacing: -0.04em;
@@ -164,15 +196,20 @@
     .nav-links {
       display: flex;
       align-items: center;
+
       gap: 5px;
     }
 
     .nav-link {
       padding: 9px 13px;
+
       border-radius: 10px;
+
       color: var(--text-soft);
+
       font-size: 14px;
       font-weight: 700;
+
       transition:
         color 180ms ease,
         background-color 180ms ease;
@@ -183,24 +220,33 @@
       background: var(--surface-soft);
     }
 
-    /* Hero */
+    /* =========================
+       Hero
+    ========================= */
 
     .hero {
       padding: 92px 0 62px;
+
       text-align: center;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
+
       gap: 9px;
+
       margin-bottom: 22px;
       padding: 8px 13px;
+
       border: 1px solid var(--border);
       border-radius: 999px;
+
       color: #475467;
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, 0.88);
+
       box-shadow: var(--shadow-small);
+
       font-size: 13px;
       font-weight: 750;
     }
@@ -208,54 +254,79 @@
     .eyebrow-dot {
       width: 8px;
       height: 8px;
+
       border-radius: 50%;
+
       background: #22c55e;
-      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.13);
+
+      box-shadow:
+        0 0 0 5px rgba(34, 197, 94, 0.13);
     }
 
     .hero h1 {
       max-width: 830px;
+
       margin: 0 auto;
+
       font-size: clamp(42px, 7vw, 76px);
       line-height: 0.98;
       letter-spacing: -0.068em;
+
       text-wrap: balance;
     }
 
     .gradient-text {
       color: transparent;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
+
+      background:
+        linear-gradient(
+          135deg,
+          #2563eb,
+          #7c3aed
+        );
+
       background-clip: text;
       -webkit-background-clip: text;
     }
 
     .hero-description {
       max-width: 650px;
+
       margin: 25px auto 0;
+
       color: var(--text-soft);
+
       font-size: clamp(16px, 2vw, 19px);
       line-height: 1.7;
+
       text-wrap: balance;
     }
 
     .hero-actions {
       margin-top: 32px;
+
       display: flex;
       justify-content: center;
-      gap: 12px;
       flex-wrap: wrap;
+
+      gap: 12px;
     }
 
     .primary-link,
     .secondary-link {
       min-height: 49px;
+
       padding: 0 21px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 13px;
+
       font-size: 15px;
       font-weight: 800;
+
       transition:
         transform 180ms ease,
         box-shadow 180ms ease,
@@ -265,26 +336,35 @@
     .primary-link {
       color: #ffffff;
       background: var(--text);
-      box-shadow: 0 11px 28px rgba(17, 24, 39, 0.18);
+
+      box-shadow:
+        0 11px 28px rgba(17, 24, 39, 0.18);
     }
 
     .primary-link:hover {
       transform: translateY(-2px);
+
       background: #000000;
-      box-shadow: 0 16px 34px rgba(17, 24, 39, 0.22);
+
+      box-shadow:
+        0 16px 34px rgba(17, 24, 39, 0.22);
     }
 
     .secondary-link {
       border: 1px solid var(--border);
+
       background: #ffffff;
     }
 
     .secondary-link:hover {
       transform: translateY(-2px);
+
       background: var(--surface-soft);
     }
 
-    /* Products */
+    /* =========================
+       Products section
+    ========================= */
 
     .products-section {
       padding: 34px 0 105px;
@@ -292,57 +372,82 @@
 
     .section-heading {
       margin-bottom: 28px;
+
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
+
       gap: 24px;
     }
 
     .section-heading h2 {
       margin: 0;
+
       font-size: clamp(29px, 4vw, 42px);
       letter-spacing: -0.05em;
     }
 
     .section-heading p {
       margin: 8px 0 0;
+
       color: var(--text-soft);
+
       line-height: 1.6;
     }
 
     .live-status {
       display: inline-flex;
       align-items: center;
+
       gap: 8px;
+
       color: var(--text-soft);
+
       font-size: 13px;
       font-weight: 750;
+
       white-space: nowrap;
     }
 
     .live-status::before {
       content: "";
+
       width: 8px;
       height: 8px;
+
       border-radius: 50%;
+
       background: #22c55e;
     }
 
     .product-grid,
     .loading-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
       gap: 20px;
     }
 
+    /* =========================
+       Product card
+    ========================= */
+
     .product-card {
       min-width: 0;
+
       overflow: hidden;
+
       border: 1px solid var(--border);
-      border-radius: var(--radius-large);
-      background: rgba(255, 255, 255, 0.96);
+      border-radius: 24px;
+
+      background: rgba(255, 255, 255, 0.97);
+
       box-shadow: var(--shadow-small);
+
       animation: card-enter 460ms both;
+
       transition:
         transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
         border-color 220ms ease,
@@ -351,34 +456,61 @@
 
     .product-card:hover {
       transform: translateY(-6px);
+
       border-color: var(--border-hover);
+
       box-shadow: var(--shadow-large);
     }
 
+    /*
+      Image container
+      Image যেকোনো resolution হলেও পুরোটা fit হবে।
+    */
     .product-image-wrap {
       position: relative;
-      height: 205px;
-      display: grid;
-      place-items: center;
+
+      height: 220px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       overflow: hidden;
+
+      padding: 22px;
+
       border-bottom: 1px solid var(--border);
+
       background:
         radial-gradient(
-          circle at 50% 40%,
-          rgba(37, 99, 235, 0.09),
+          circle at 50% 45%,
+          rgba(37, 99, 235, 0.075),
           transparent 68%
         ),
-        var(--surface-soft);
+        #ffffff;
     }
 
+    /*
+      absolute inset ব্যবহার করায় image কখনো
+      card-এর বাইরে যাবে না বা crop হবে না।
+    */
     .product-image {
-      width: 100%;
-      height: 100%;
+      position: absolute;
+
+      inset: 24px;
+
+      width: calc(100% - 48px);
+      height: calc(100% - 48px);
+
       display: block;
-      padding: 26px;
-      object-fit: contain;
-      object-position: center;
-      transition: transform 250ms ease;
+
+      object-fit: contain !important;
+      object-position: center !important;
+
+      border-radius: 12px;
+
+      transition:
+        transform 250ms ease;
     }
 
     .product-card:hover .product-image {
@@ -388,12 +520,24 @@
     .product-image-fallback {
       width: 76px;
       height: 76px;
+
       display: grid;
       place-items: center;
+
       border-radius: 22px;
+
       color: #ffffff;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
-      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.21);
+
+      background:
+        linear-gradient(
+          135deg,
+          #2563eb,
+          #7c3aed
+        );
+
+      box-shadow:
+        0 14px 35px rgba(37, 99, 235, 0.21);
+
       font-size: 24px;
       font-weight: 900;
       letter-spacing: -0.05em;
@@ -401,23 +545,43 @@
 
     .stock-badge {
       position: absolute;
+
       top: 15px;
       right: 15px;
+      z-index: 2;
+
       padding: 7px 10px;
-      border: 1px solid rgba(21, 128, 61, 0.09);
+
+      border:
+        1px solid rgba(21, 128, 61, 0.09);
+
       border-radius: 999px;
+
       color: var(--success);
-      background: rgba(236, 253, 243, 0.94);
-      box-shadow: 0 5px 16px rgba(15, 23, 42, 0.05);
+
+      background:
+        rgba(236, 253, 243, 0.96);
+
+      box-shadow:
+        0 5px 16px rgba(15, 23, 42, 0.05);
+
       font-size: 12px;
       font-weight: 850;
+
+      white-space: nowrap;
+
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     .stock-badge.out {
-      border-color: rgba(220, 38, 38, 0.08);
+      border-color:
+        rgba(220, 38, 38, 0.08);
+
       color: var(--danger);
-      background: rgba(255, 241, 242, 0.95);
+
+      background:
+        rgba(255, 241, 242, 0.96);
     }
 
     .product-content {
@@ -426,22 +590,28 @@
 
     .product-name {
       margin: 0;
+
       font-size: 21px;
       line-height: 1.3;
       letter-spacing: -0.034em;
+
       overflow-wrap: anywhere;
     }
 
     .product-meta {
       margin: 8px 0 0;
+
       color: var(--text-soft);
+
       font-size: 14px;
       line-height: 1.55;
     }
 
     .product-divider {
       height: 1px;
+
       margin: 21px 0;
+
       background: var(--border);
     }
 
@@ -449,13 +619,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 15px;
     }
 
     .price-label {
       display: block;
+
       margin-bottom: 3px;
+
       color: var(--text-light);
+
       font-size: 12px;
       font-weight: 750;
     }
@@ -468,12 +642,18 @@
 
     .buy-button {
       min-height: 46px;
+
       padding: 0 18px;
+
       border-radius: 12px;
+
       cursor: pointer;
+
       color: #ffffff;
       background: var(--primary);
+
       font-weight: 850;
+
       transition:
         transform 180ms ease,
         background-color 180ms ease,
@@ -482,8 +662,11 @@
 
     .buy-button:hover:not(:disabled) {
       transform: translateY(-2px);
-      background: var(--primary-dark);
-      box-shadow: 0 11px 24px rgba(37, 99, 235, 0.24);
+
+      background: var(--primary-hover);
+
+      box-shadow:
+        0 11px 24px rgba(37, 99, 235, 0.24);
     }
 
     .buy-button:active:not(:disabled) {
@@ -492,16 +675,21 @@
 
     .buy-button:disabled {
       cursor: not-allowed;
+
       color: #98a2b3;
       background: #edf0f4;
     }
 
-    /* Loading */
+    /* =========================
+       Loading skeleton
+    ========================= */
 
     .skeleton {
       min-height: 390px;
+
       border: 1px solid var(--border);
-      border-radius: var(--radius-large);
+      border-radius: 24px;
+
       background:
         linear-gradient(
           100deg,
@@ -509,22 +697,31 @@
           #fafafa 35%,
           #f3f4f6 50%
         );
+
       background-size: 250% 100%;
-      animation: shimmer 1.35s infinite linear;
+
+      animation:
+        shimmer 1.35s infinite linear;
     }
 
     .empty-state {
       grid-column: 1 / -1;
+
       padding: 64px 24px;
+
       border: 1px dashed #d7dce5;
-      border-radius: var(--radius-large);
+      border-radius: 24px;
+
       color: var(--text-soft);
       background: var(--surface-soft);
+
       text-align: center;
       line-height: 1.65;
     }
 
-    /* Support */
+    /* =========================
+       Support
+    ========================= */
 
     .support-section {
       padding: 0 0 95px;
@@ -532,12 +729,16 @@
 
     .support-card {
       padding: 36px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 24px;
+
       border: 1px solid var(--border);
       border-radius: 28px;
+
       background:
         linear-gradient(
           135deg,
@@ -548,22 +749,30 @@
 
     .support-card h2 {
       margin: 0;
+
       font-size: clamp(25px, 4vw, 36px);
       letter-spacing: -0.045em;
     }
 
     .support-card p {
       margin: 9px 0 0;
+
       color: var(--text-soft);
+
       line-height: 1.6;
     }
 
-    /* Footer */
+    /* =========================
+       Footer
+    ========================= */
 
     .site-footer {
       padding: 27px 0 38px;
+
       border-top: 1px solid var(--border);
+
       color: var(--text-soft);
+
       font-size: 13px;
     }
 
@@ -571,28 +780,44 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
       flex-wrap: wrap;
+
+      gap: 18px;
     }
 
-    /* Toast */
+    /* =========================
+       Toast
+    ========================= */
 
     .toast {
       position: fixed;
+
       right: 18px;
       bottom: 18px;
       z-index: 100;
-      max-width: min(370px, calc(100vw - 36px));
+
+      max-width:
+        min(370px, calc(100vw - 36px));
+
       padding: 13px 16px;
+
       border-radius: 14px;
+
       color: #ffffff;
       background: #111827;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+
+      box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.25);
+
       font-size: 14px;
       font-weight: 700;
+
       opacity: 0;
+
       pointer-events: none;
+
       transform: translateY(14px);
+
       transition:
         opacity 180ms ease,
         transform 180ms ease;
@@ -600,8 +825,13 @@
 
     .toast.show {
       opacity: 1;
+
       transform: translateY(0);
     }
+
+    /* =========================
+       Animations
+    ========================= */
 
     @keyframes shimmer {
       to {
@@ -612,19 +842,26 @@
     @keyframes card-enter {
       from {
         opacity: 0;
+
         transform: translateY(14px);
       }
 
       to {
         opacity: 1;
+
         transform: translateY(0);
       }
     }
 
+    /* =========================
+       Tablet
+    ========================= */
+
     @media (max-width: 900px) {
       .product-grid,
       .loading-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
       }
 
       .hero {
@@ -637,13 +874,30 @@
       }
     }
 
+    /* =========================
+       Mobile
+    ========================= */
+
     @media (max-width: 620px) {
       .container {
-        width: min(calc(100% - 22px), var(--container));
+        width:
+          min(
+            calc(100% - 22px),
+            var(--container-width)
+          );
       }
 
       .navbar {
         min-height: 64px;
+      }
+
+      .brand {
+        font-size: 17px;
+      }
+
+      .brand-mark {
+        width: 37px;
+        height: 37px;
       }
 
       .nav-links {
@@ -655,7 +909,8 @@
       }
 
       .hero h1 {
-        font-size: clamp(40px, 14vw, 57px);
+        font-size:
+          clamp(40px, 14vw, 57px);
       }
 
       .hero-description {
@@ -675,6 +930,7 @@
       .product-grid,
       .loading-grid {
         grid-template-columns: 1fr;
+
         gap: 15px;
       }
 
@@ -687,15 +943,33 @@
       }
 
       .product-image-wrap {
-        height: 190px;
+        height: 195px;
+
+        padding: 20px;
+      }
+
+      .product-image {
+        inset: 22px;
+
+        width: calc(100% - 44px);
+        height: calc(100% - 44px);
       }
 
       .product-content {
         padding: 19px;
       }
 
+      .product-name {
+        font-size: 20px;
+      }
+
+      .product-price {
+        font-size: 25px;
+      }
+
       .support-card {
         padding: 27px 21px;
+
         border-radius: 22px;
       }
 
@@ -703,6 +977,10 @@
         padding-bottom: 75px;
       }
     }
+
+    /* =========================
+       Reduced motion
+    ========================= */
 
     @media (prefers-reduced-motion: reduce) {
       html {
@@ -723,14 +1001,33 @@
 <body>
   <header class="site-header">
     <div class="container navbar">
-      <a class="brand" href="/" aria-label="BUETian Tech home">
+      <a
+        class="brand"
+        href="/"
+        aria-label="BUETian Tech Store home"
+      >
         <span class="brand-mark">BT</span>
-        <span>BUETian Tech</span>
+
+        <span>BUETian Tech Store</span>
       </a>
 
-      <nav class="nav-links" aria-label="Main navigation">
-        <a class="nav-link" href="#products">Products</a>
-        <a class="nav-link" href="#support">Support</a>
+      <nav
+        class="nav-links"
+        aria-label="Main navigation"
+      >
+        <a
+          class="nav-link"
+          href="#products"
+        >
+          Products
+        </a>
+
+        <a
+          class="nav-link"
+          href="#support"
+        >
+          Support
+        </a>
       </nav>
     </div>
   </header>
@@ -740,12 +1037,16 @@
       <div class="container">
         <div class="eyebrow">
           <span class="eyebrow-dot"></span>
+
           Live stock and updated prices
         </div>
 
         <h1>
           Premium digital tools.
-          <span class="gradient-text">Simple pricing.</span>
+
+          <span class="gradient-text">
+            Simple pricing.
+          </span>
         </h1>
 
         <p class="hero-description">
@@ -754,32 +1055,48 @@
         </p>
 
         <div class="hero-actions">
-          <a class="primary-link" href="#products">
+          <a
+            class="primary-link"
+            href="#products"
+          >
             Explore Products
           </a>
 
-          <a class="secondary-link" href="#support">
+          <a
+            class="secondary-link"
+            href="#support"
+          >
             Contact Support
           </a>
         </div>
       </div>
     </section>
 
-    <section class="products-section" id="products">
+    <section
+      class="products-section"
+      id="products"
+    >
       <div class="container">
         <div class="section-heading">
           <div>
             <h2>Available Products</h2>
 
             <p>
-              Prices and stock are updated directly from our live inventory.
+              Prices and stock are updated directly
+              from our live inventory.
             </p>
           </div>
 
-          <div class="live-status">Live inventory</div>
+          <div class="live-status">
+            Live inventory
+          </div>
         </div>
 
-        <div id="loading" class="loading-grid" aria-label="Loading products">
+        <div
+          id="loading"
+          class="loading-grid"
+          aria-label="Loading products"
+        >
           <div class="skeleton"></div>
           <div class="skeleton"></div>
           <div class="skeleton"></div>
@@ -794,19 +1111,27 @@
       </div>
     </section>
 
-    <section class="support-section" id="support">
+    <section
+      class="support-section"
+      id="support"
+    >
       <div class="container">
         <div class="support-card">
           <div>
-            <h2>Need help before ordering?</h2>
+            <h2>
+              Need help before ordering?
+            </h2>
 
             <p>
-              Contact our support team for product availability
-              and order assistance.
+              Contact our support team for product
+              availability and order assistance.
             </p>
           </div>
 
-          <a class="primary-link" href="#products">
+          <a
+            class="primary-link"
+            href="#products"
+          >
             View Products
           </a>
         </div>
@@ -817,7 +1142,8 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <span>
-        © <span id="year"></span> BUETian Tech
+        © <span id="year"></span>
+        BUETian Tech Store
       </span>
 
       <span>
@@ -835,14 +1161,19 @@
 
   <script>
     /*
-      Google Form connect করার পরে এখানে form URL বসাবে।
-      এখন খালি রাখলে Buy Now চাপলে শুধু message দেখাবে।
+      Google Form ready হলে quotation mark-এর
+      ভিতরে form URL বসাবে।
     */
     const ORDER_FORM_URL = "";
 
-    const productGrid = document.getElementById("productGrid");
-    const loading = document.getElementById("loading");
-    const toast = document.getElementById("toast");
+    const productGrid =
+      document.getElementById("productGrid");
+
+    const loading =
+      document.getElementById("loading");
+
+    const toast =
+      document.getElementById("toast");
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
@@ -856,26 +1187,35 @@
       return (
         words
           .slice(0, 2)
-          .map(word => word.charAt(0).toUpperCase())
+          .map(word =>
+            word.charAt(0).toUpperCase()
+          )
           .join("") || "BT"
       );
     }
 
     function formatPrice(price) {
-      return new Intl.NumberFormat("en-BD", {
-        maximumFractionDigits: 0
-      }).format(Number(price) || 0);
+      return new Intl.NumberFormat(
+        "en-BD",
+        {
+          maximumFractionDigits: 0
+        }
+      ).format(Number(price) || 0);
     }
 
     function showToast(message) {
       toast.textContent = message;
+
       toast.classList.add("show");
 
-      window.clearTimeout(showToast.timer);
+      window.clearTimeout(
+        showToast.timer
+      );
 
-      showToast.timer = window.setTimeout(() => {
-        toast.classList.remove("show");
-      }, 2800);
+      showToast.timer =
+        window.setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2800);
     }
 
     function handleBuy(product) {
@@ -887,7 +1227,8 @@
         return;
       }
 
-      const orderUrl = new URL(ORDER_FORM_URL);
+      const orderUrl =
+        new URL(ORDER_FORM_URL);
 
       orderUrl.searchParams.set(
         "product",
@@ -899,12 +1240,34 @@
         String(product.price)
       );
 
-      window.location.href = orderUrl.toString();
+      window.location.href =
+        orderUrl.toString();
+    }
+
+    function createFallback(productName) {
+      const fallback =
+        document.createElement("div");
+
+      fallback.className =
+        "product-image-fallback";
+
+      fallback.textContent =
+        getInitials(productName);
+
+      fallback.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      return fallback;
     }
 
     function createProductVisual(product) {
-      const imageWrap = document.createElement("div");
-      imageWrap.className = "product-image-wrap";
+      const imageWrap =
+        document.createElement("div");
+
+      imageWrap.className =
+        "product-image-wrap";
 
       let visual;
 
@@ -912,102 +1275,168 @@
         product.image &&
         String(product.image).trim() !== ""
       ) {
-        visual = document.createElement("img");
-        visual.className = "product-image";
-        visual.src = product.image;
-        visual.alt = `${product.name} thumbnail`;
+        visual =
+          document.createElement("img");
+
+        visual.className =
+          "product-image";
+
+        visual.src =
+          String(product.image).trim();
+
+        visual.alt =
+          `${product.name} thumbnail`;
+
         visual.loading = "lazy";
         visual.decoding = "async";
-        visual.referrerPolicy = "no-referrer";
 
-        visual.addEventListener("error", () => {
-          const fallback = document.createElement("div");
-          fallback.className = "product-image-fallback";
-          fallback.textContent = getInitials(product.name);
-          fallback.setAttribute("aria-hidden", "true");
-
-          visual.replaceWith(fallback);
-        });
+        visual.addEventListener(
+          "error",
+          () => {
+            visual.replaceWith(
+              createFallback(product.name)
+            );
+          },
+          { once: true }
+        );
       } else {
-        visual = document.createElement("div");
-        visual.className = "product-image-fallback";
-        visual.textContent = getInitials(product.name);
-        visual.setAttribute("aria-hidden", "true");
+        visual =
+          createFallback(product.name);
       }
 
-      const available = Number(product.stock) > 0;
+      const available =
+        Number(product.stock) > 0;
 
-      const stockBadge = document.createElement("span");
+      const stockBadge =
+        document.createElement("span");
 
       stockBadge.className =
         `stock-badge${available ? "" : " out"}`;
 
-      stockBadge.textContent = available
-        ? `${product.stock} in stock`
-        : "Out of stock";
+      stockBadge.textContent =
+        available
+          ? `${product.stock} in stock`
+          : "Out of stock";
 
-      imageWrap.append(visual, stockBadge);
+      imageWrap.append(
+        visual,
+        stockBadge
+      );
 
       return imageWrap;
     }
 
-    function createProductCard(product, index) {
-      const card = document.createElement("article");
-      card.className = "product-card";
+    function createProductCard(
+      product,
+      index
+    ) {
+      const card =
+        document.createElement("article");
+
+      card.className =
+        "product-card";
 
       card.style.animationDelay =
         `${Math.min(index * 65, 325)}ms`;
 
-      const imageWrap = createProductVisual(product);
+      const imageWrap =
+        createProductVisual(product);
 
-      const content = document.createElement("div");
-      content.className = "product-content";
+      const content =
+        document.createElement("div");
 
-      const name = document.createElement("h3");
-      name.className = "product-name";
-      name.textContent = product.name;
+      content.className =
+        "product-content";
 
-      const available = Number(product.stock) > 0;
+      const name =
+        document.createElement("h3");
 
-      const meta = document.createElement("p");
-      meta.className = "product-meta";
+      name.className =
+        "product-name";
 
-      meta.textContent = available
-        ? "Available now for purchase."
-        : "Currently unavailable.";
+      name.textContent =
+        product.name;
 
-      const divider = document.createElement("div");
-      divider.className = "product-divider";
+      const available =
+        Number(product.stock) > 0;
 
-      const bottom = document.createElement("div");
-      bottom.className = "product-bottom";
+      const meta =
+        document.createElement("p");
 
-      const priceWrap = document.createElement("div");
+      meta.className =
+        "product-meta";
 
-      const priceLabel = document.createElement("span");
-      priceLabel.className = "price-label";
-      priceLabel.textContent = "Price";
+      meta.textContent =
+        available
+          ? "Available now for purchase."
+          : "Currently unavailable.";
 
-      const price = document.createElement("div");
-      price.className = "product-price";
-      price.textContent = `৳${formatPrice(product.price)}`;
+      const divider =
+        document.createElement("div");
 
-      priceWrap.append(priceLabel, price);
+      divider.className =
+        "product-divider";
 
-      const buyButton = document.createElement("button");
-      buyButton.className = "buy-button";
-      buyButton.type = "button";
-      buyButton.disabled = !available;
+      const bottom =
+        document.createElement("div");
 
-      buyButton.textContent = available
-        ? "Buy Now"
-        : "Unavailable";
+      bottom.className =
+        "product-bottom";
 
-      buyButton.addEventListener("click", () => {
-        handleBuy(product);
-      });
+      const priceWrap =
+        document.createElement("div");
 
-      bottom.append(priceWrap, buyButton);
+      const priceLabel =
+        document.createElement("span");
+
+      priceLabel.className =
+        "price-label";
+
+      priceLabel.textContent =
+        "Price";
+
+      const price =
+        document.createElement("div");
+
+      price.className =
+        "product-price";
+
+      price.textContent =
+        `৳${formatPrice(product.price)}`;
+
+      priceWrap.append(
+        priceLabel,
+        price
+      );
+
+      const buyButton =
+        document.createElement("button");
+
+      buyButton.className =
+        "buy-button";
+
+      buyButton.type =
+        "button";
+
+      buyButton.disabled =
+        !available;
+
+      buyButton.textContent =
+        available
+          ? "Buy Now"
+          : "Unavailable";
+
+      buyButton.addEventListener(
+        "click",
+        () => {
+          handleBuy(product);
+        }
+      );
+
+      bottom.append(
+        priceWrap,
+        buyButton
+      );
 
       content.append(
         name,
@@ -1016,7 +1445,10 @@
         bottom
       );
 
-      card.append(imageWrap, content);
+      card.append(
+        imageWrap,
+        content
+      );
 
       return card;
     }
@@ -1028,21 +1460,33 @@
         !Array.isArray(products) ||
         products.length === 0
       ) {
-        const empty = document.createElement("div");
-        empty.className = "empty-state";
+        const empty =
+          document.createElement("div");
+
+        empty.className =
+          "empty-state";
 
         empty.textContent =
           "No products are available right now.";
 
         productGrid.appendChild(empty);
       } else {
-        products.forEach((product, index) => {
-          productGrid.appendChild(
-            createProductCard(product, index)
-          );
-        });
+        products.forEach(
+          (product, index) => {
+            productGrid.appendChild(
+              createProductCard(
+                product,
+                index
+              )
+            );
+          }
+        );
       }
 
+      /*
+        Product load হওয়ার পর skeleton পুরো
+        লুকিয়ে যাবে এবং product grid দেখা যাবে।
+      */
       loading.hidden = true;
       productGrid.hidden = false;
     }
@@ -1051,8 +1495,11 @@
       loading.hidden = true;
       productGrid.hidden = false;
 
-      const empty = document.createElement("div");
-      empty.className = "empty-state";
+      const empty =
+        document.createElement("div");
+
+      empty.className =
+        "empty-state";
 
       empty.textContent =
         "Products could not be loaded. Please refresh the page.";
@@ -1062,9 +1509,13 @@
 
     async function loadProducts() {
       try {
-        const response = await fetch("/api/products", {
-          cache: "no-store"
-        });
+        const response =
+          await fetch(
+            "/api/products",
+            {
+              cache: "no-store"
+            }
+          );
 
         if (!response.ok) {
           throw new Error(
@@ -1072,7 +1523,8 @@
           );
         }
 
-        const data = await response.json();
+        const data =
+          await response.json();
 
         if (
           !data.success ||
@@ -1086,6 +1538,7 @@
         renderProducts(data.products);
       } catch (error) {
         console.error(error);
+
         showLoadingError();
       }
     }
@@ -1094,9 +1547,12 @@
 
     /*
       Website খোলা থাকলে প্রতি ৩০ সেকেন্ডে
-      price, stock এবং image refresh হবে।
+      price, stock এবং image আবার update হবে।
     */
-    window.setInterval(loadProducts, 30000);
+    window.setInterval(
+      loadProducts,
+      30000
+    );
   </script>
 </body>
 </html>
