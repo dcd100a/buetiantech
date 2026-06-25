@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
 
   <meta
     name="description"
-    content="BUETian Tech — Premium digital products at simple prices."
+    content="BUETian Tech — Premium digital products with live prices and stock."
   >
 
   <meta name="theme-color" content="#ffffff">
@@ -19,23 +20,38 @@
 
   <style>
     :root {
-      --background: #ffffff;
+      --bg: #ffffff;
       --surface: #ffffff;
       --surface-soft: #f7f8fb;
-      --text: #15171c;
-      --text-soft: #6b7280;
-      --border: #e9ebf0;
+      --surface-blue: #f5f8ff;
+
+      --text: #111827;
+      --text-soft: #667085;
+      --text-light: #98a2b3;
+
+      --border: #e7eaf0;
+      --border-hover: #d2d7e1;
+
       --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --success: #16803c;
+      --primary-dark: #1d4ed8;
+
+      --success: #15803d;
+      --success-bg: #ecfdf3;
+
       --danger: #dc2626;
-      --shadow:
+      --danger-bg: #fff1f2;
+
+      --shadow-small:
         0 1px 2px rgba(15, 23, 42, 0.03),
-        0 12px 35px rgba(15, 23, 42, 0.07);
+        0 4px 12px rgba(15, 23, 42, 0.04);
+
+      --shadow-large:
+        0 18px 45px rgba(15, 23, 42, 0.09);
+
+      --container: 1180px;
       --radius-large: 24px;
       --radius-medium: 16px;
       --radius-small: 12px;
-      --container: 1180px;
     }
 
     * {
@@ -53,11 +69,12 @@
       color: var(--text);
       background:
         radial-gradient(
-          circle at 50% 0%,
-          rgba(37, 99, 235, 0.055),
+          circle at 50% -10%,
+          rgba(37, 99, 235, 0.08),
           transparent 34rem
         ),
-        var(--background);
+        var(--bg);
+
       font-family:
         Inter,
         ui-sans-serif,
@@ -66,8 +83,19 @@
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
+
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
     }
 
     button,
@@ -75,13 +103,13 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    button {
-      font: inherit;
-    }
-
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    button {
+      border: 0;
     }
 
     .container {
@@ -89,14 +117,16 @@
       margin-inline: auto;
     }
 
+    /* Header */
+
     .site-header {
       position: sticky;
       top: 0;
       z-index: 50;
-      border-bottom: 1px solid rgba(233, 235, 240, 0.8);
-      background: rgba(255, 255, 255, 0.86);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(231, 234, 240, 0.85);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
     .navbar {
@@ -111,29 +141,30 @@
       display: inline-flex;
       align-items: center;
       gap: 11px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
       font-size: 20px;
+      font-weight: 850;
+      letter-spacing: -0.045em;
     }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
-      border-radius: 12px;
+      flex: 0 0 auto;
+      border-radius: 13px;
       color: #ffffff;
-      background:
-        linear-gradient(135deg, #111827, #2563eb);
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
-      font-size: 16px;
+      background: linear-gradient(135deg, #111827, #2563eb);
+      box-shadow: 0 9px 22px rgba(37, 99, 235, 0.2);
+      font-size: 15px;
+      font-weight: 900;
       letter-spacing: -0.04em;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
     }
 
     .nav-link {
@@ -141,7 +172,7 @@
       border-radius: 10px;
       color: var(--text-soft);
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       transition:
         color 180ms ease,
         background-color 180ms ease;
@@ -152,24 +183,26 @@
       background: var(--surface-soft);
     }
 
+    /* Hero */
+
     .hero {
-      padding: 94px 0 66px;
+      padding: 92px 0 62px;
       text-align: center;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 20px;
+      gap: 9px;
+      margin-bottom: 22px;
       padding: 8px 13px;
       border: 1px solid var(--border);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.8);
-      color: #475569;
+      color: #475467;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: var(--shadow-small);
       font-size: 13px;
-      font-weight: 700;
-      box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+      font-weight: 750;
     }
 
     .eyebrow-dot {
@@ -177,19 +210,19 @@
       height: 8px;
       border-radius: 50%;
       background: #22c55e;
-      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.12);
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.13);
     }
 
     .hero h1 {
-      max-width: 780px;
+      max-width: 830px;
       margin: 0 auto;
-      font-size: clamp(40px, 7vw, 72px);
+      font-size: clamp(42px, 7vw, 76px);
       line-height: 0.98;
-      letter-spacing: -0.065em;
+      letter-spacing: -0.068em;
       text-wrap: balance;
     }
 
-    .hero-gradient {
+    .gradient-text {
       color: transparent;
       background: linear-gradient(135deg, #2563eb, #7c3aed);
       background-clip: text;
@@ -197,7 +230,7 @@
     }
 
     .hero-description {
-      max-width: 620px;
+      max-width: 650px;
       margin: 25px auto 0;
       color: var(--text-soft);
       font-size: clamp(16px, 2vw, 19px);
@@ -215,14 +248,14 @@
 
     .primary-link,
     .secondary-link {
-      min-height: 48px;
-      padding: 0 20px;
+      min-height: 49px;
+      padding: 0 21px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 13px;
       font-size: 15px;
-      font-weight: 750;
+      font-weight: 800;
       transition:
         transform 180ms ease,
         box-shadow 180ms ease,
@@ -232,13 +265,13 @@
     .primary-link {
       color: #ffffff;
       background: var(--text);
-      box-shadow: 0 10px 25px rgba(17, 24, 39, 0.18);
+      box-shadow: 0 11px 28px rgba(17, 24, 39, 0.18);
     }
 
     .primary-link:hover {
       transform: translateY(-2px);
       background: #000000;
-      box-shadow: 0 15px 32px rgba(17, 24, 39, 0.22);
+      box-shadow: 0 16px 34px rgba(17, 24, 39, 0.22);
     }
 
     .secondary-link {
@@ -251,22 +284,24 @@
       background: var(--surface-soft);
     }
 
+    /* Products */
+
     .products-section {
-      padding: 34px 0 100px;
+      padding: 34px 0 105px;
     }
 
     .section-heading {
       margin-bottom: 28px;
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
     }
 
     .section-heading h2 {
       margin: 0;
-      font-size: clamp(28px, 4vw, 40px);
-      letter-spacing: -0.045em;
+      font-size: clamp(29px, 4vw, 42px);
+      letter-spacing: -0.05em;
     }
 
     .section-heading p {
@@ -281,7 +316,7 @@
       gap: 8px;
       color: var(--text-soft);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 750;
       white-space: nowrap;
     }
 
@@ -293,95 +328,112 @@
       background: #22c55e;
     }
 
-    .product-grid {
+    .product-grid,
+    .loading-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
     .product-card {
-      position: relative;
       min-width: 0;
       overflow: hidden;
-      padding: 22px;
       border: 1px solid var(--border);
       border-radius: var(--radius-large);
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 2px 7px rgba(15, 23, 42, 0.025);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: var(--shadow-small);
+      animation: card-enter 460ms both;
       transition:
         transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
         border-color 220ms ease,
         box-shadow 220ms ease;
-      animation: card-enter 450ms both;
     }
 
     .product-card:hover {
       transform: translateY(-6px);
-      border-color: #d9dde6;
-      box-shadow: var(--shadow);
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-large);
     }
 
-    .product-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto;
-      height: 4px;
-      background: linear-gradient(90deg, #2563eb, #8b5cf6);
-      opacity: 0;
-      transition: opacity 220ms ease;
-    }
-
-    .product-card:hover::before {
-      opacity: 1;
-    }
-
-    .product-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .product-logo {
-      width: 52px;
-      height: 52px;
-      flex: 0 0 auto;
+    .product-image-wrap {
+      position: relative;
+      height: 205px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(37, 99, 235, 0.09);
-      border-radius: 16px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(
+          circle at 50% 40%,
+          rgba(37, 99, 235, 0.09),
+          transparent 68%
+        ),
+        var(--surface-soft);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      padding: 26px;
+      object-fit: contain;
+      object-position: center;
+      transition: transform 250ms ease;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.035);
+    }
+
+    .product-image-fallback {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
       color: #ffffff;
       background: linear-gradient(135deg, #2563eb, #7c3aed);
-      font-size: 19px;
-      font-weight: 850;
-      letter-spacing: -0.04em;
-      box-shadow: 0 9px 24px rgba(37, 99, 235, 0.16);
+      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.21);
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.05em;
     }
 
     .stock-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
       padding: 7px 10px;
+      border: 1px solid rgba(21, 128, 61, 0.09);
       border-radius: 999px;
       color: var(--success);
-      background: #effcf3;
+      background: rgba(236, 253, 243, 0.94);
+      box-shadow: 0 5px 16px rgba(15, 23, 42, 0.05);
       font-size: 12px;
-      font-weight: 800;
-      white-space: nowrap;
+      font-weight: 850;
+      backdrop-filter: blur(8px);
     }
 
     .stock-badge.out {
+      border-color: rgba(220, 38, 38, 0.08);
       color: var(--danger);
-      background: #fff1f2;
+      background: rgba(255, 241, 242, 0.95);
+    }
+
+    .product-content {
+      padding: 22px;
     }
 
     .product-name {
-      margin: 24px 0 8px;
+      margin: 0;
       font-size: 21px;
-      line-height: 1.25;
-      letter-spacing: -0.03em;
+      line-height: 1.3;
+      letter-spacing: -0.034em;
+      overflow-wrap: anywhere;
     }
 
     .product-meta {
-      margin: 0;
+      margin: 8px 0 0;
       color: var(--text-soft);
       font-size: 14px;
       line-height: 1.55;
@@ -389,7 +441,7 @@
 
     .product-divider {
       height: 1px;
-      margin: 23px 0;
+      margin: 21px 0;
       background: var(--border);
     }
 
@@ -403,26 +455,25 @@
     .price-label {
       display: block;
       margin-bottom: 3px;
-      color: var(--text-soft);
+      color: var(--text-light);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 750;
     }
 
     .product-price {
-      font-size: 25px;
-      font-weight: 850;
-      letter-spacing: -0.045em;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.05em;
     }
 
     .buy-button {
-      min-height: 45px;
-      padding: 0 17px;
-      border: 0;
+      min-height: 46px;
+      padding: 0 18px;
       border-radius: 12px;
       cursor: pointer;
       color: #ffffff;
       background: var(--primary);
-      font-weight: 800;
+      font-weight: 850;
       transition:
         transform 180ms ease,
         background-color 180ms ease,
@@ -431,8 +482,8 @@
 
     .buy-button:hover:not(:disabled) {
       transform: translateY(-2px);
-      background: var(--primary-hover);
-      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
+      background: var(--primary-dark);
+      box-shadow: 0 11px 24px rgba(37, 99, 235, 0.24);
     }
 
     .buy-button:active:not(:disabled) {
@@ -441,43 +492,76 @@
 
     .buy-button:disabled {
       cursor: not-allowed;
-      color: #98a0ad;
+      color: #98a2b3;
       background: #edf0f4;
     }
 
-    .loading-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
+    /* Loading */
 
     .skeleton {
-      min-height: 285px;
+      min-height: 390px;
       border: 1px solid var(--border);
       border-radius: var(--radius-large);
       background:
         linear-gradient(
           100deg,
-          #f5f6f8 20%,
-          #fbfbfc 35%,
-          #f5f6f8 50%
+          #f3f4f6 20%,
+          #fafafa 35%,
+          #f3f4f6 50%
         );
       background-size: 250% 100%;
-      animation: shimmer 1.4s infinite linear;
+      animation: shimmer 1.35s infinite linear;
     }
 
     .empty-state {
       grid-column: 1 / -1;
-      padding: 60px 24px;
-      border: 1px dashed #d9dde5;
+      padding: 64px 24px;
+      border: 1px dashed #d7dce5;
       border-radius: var(--radius-large);
-      text-align: center;
       color: var(--text-soft);
       background: var(--surface-soft);
+      text-align: center;
+      line-height: 1.65;
     }
 
+    /* Support */
+
+    .support-section {
+      padding: 0 0 95px;
+    }
+
+    .support-card {
+      padding: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(245, 248, 255, 0.98),
+          rgba(255, 255, 255, 0.98)
+        );
+    }
+
+    .support-card h2 {
+      margin: 0;
+      font-size: clamp(25px, 4vw, 36px);
+      letter-spacing: -0.045em;
+    }
+
+    .support-card p {
+      margin: 9px 0 0;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+
     .site-footer {
-      padding: 26px 0 38px;
+      padding: 27px 0 38px;
       border-top: 1px solid var(--border);
       color: var(--text-soft);
       font-size: 13px;
@@ -491,20 +575,21 @@
       flex-wrap: wrap;
     }
 
+    /* Toast */
+
     .toast {
       position: fixed;
       right: 18px;
       bottom: 18px;
       z-index: 100;
-      max-width: min(360px, calc(100vw - 36px));
+      max-width: min(370px, calc(100vw - 36px));
       padding: 13px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 14px;
       color: #ffffff;
       background: #111827;
-      box-shadow: 0 18px 48px rgba(15, 23, 42, 0.25);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
       font-size: 14px;
-      font-weight: 650;
+      font-weight: 700;
       opacity: 0;
       pointer-events: none;
       transform: translateY(14px);
@@ -545,6 +630,11 @@
       .hero {
         padding-top: 76px;
       }
+
+      .support-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
     }
 
     @media (max-width: 620px) {
@@ -561,11 +651,11 @@
       }
 
       .hero {
-        padding: 66px 0 48px;
+        padding: 65px 0 48px;
       }
 
       .hero h1 {
-        font-size: clamp(39px, 14vw, 56px);
+        font-size: clamp(40px, 14vw, 57px);
       }
 
       .hero-description {
@@ -585,20 +675,32 @@
       .product-grid,
       .loading-grid {
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 15px;
       }
 
       .product-card {
-        padding: 19px;
-        border-radius: 20px;
+        border-radius: 21px;
       }
 
       .product-card:hover {
         transform: none;
       }
 
+      .product-image-wrap {
+        height: 190px;
+      }
+
+      .product-content {
+        padding: 19px;
+      }
+
+      .support-card {
+        padding: 27px 21px;
+        border-radius: 22px;
+      }
+
       .products-section {
-        padding-bottom: 72px;
+        padding-bottom: 75px;
       }
     }
 
@@ -621,7 +723,7 @@
 <body>
   <header class="site-header">
     <div class="container navbar">
-      <a class="brand" href="/" aria-label="BUETian Tech Home">
+      <a class="brand" href="/" aria-label="BUETian Tech home">
         <span class="brand-mark">BT</span>
         <span>BUETian Tech</span>
       </a>
@@ -643,12 +745,12 @@
 
         <h1>
           Premium digital tools.
-          <span class="hero-gradient">Simple pricing.</span>
+          <span class="gradient-text">Simple pricing.</span>
         </h1>
 
         <p class="hero-description">
-          Get your favourite digital products quickly with clear prices,
-          live availability and reliable support.
+          Explore useful digital products with live availability,
+          transparent prices and fast customer support.
         </p>
 
         <div class="hero-actions">
@@ -668,7 +770,10 @@
         <div class="section-heading">
           <div>
             <h2>Available Products</h2>
-            <p>Prices and stock are updated directly from our live inventory.</p>
+
+            <p>
+              Prices and stock are updated directly from our live inventory.
+            </p>
           </div>
 
           <div class="live-status">Live inventory</div>
@@ -688,18 +793,53 @@
         ></div>
       </div>
     </section>
+
+    <section class="support-section" id="support">
+      <div class="container">
+        <div class="support-card">
+          <div>
+            <h2>Need help before ordering?</h2>
+
+            <p>
+              Contact our support team for product availability
+              and order assistance.
+            </p>
+          </div>
+
+          <a class="primary-link" href="#products">
+            View Products
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer" id="support">
+  <footer class="site-footer">
     <div class="container footer-content">
-      <span>© <span id="year"></span> BUETian Tech</span>
-      <span>Fast delivery · Live stock · Customer support</span>
+      <span>
+        © <span id="year"></span> BUETian Tech
+      </span>
+
+      <span>
+        Fast delivery · Live stock · Customer support
+      </span>
     </div>
   </footer>
 
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
 
   <script>
+    /*
+      Google Form connect করার পরে এখানে form URL বসাবে।
+      এখন খালি রাখলে Buy Now চাপলে শুধু message দেখাবে।
+    */
+    const ORDER_FORM_URL = "";
+
     const productGrid = document.getElementById("productGrid");
     const loading = document.getElementById("loading");
     const toast = document.getElementById("toast");
@@ -708,15 +848,17 @@
       new Date().getFullYear();
 
     function getInitials(name) {
-      const words = String(name)
+      const words = String(name || "")
         .trim()
         .split(/\s+/)
         .filter(Boolean);
 
-      return words
-        .slice(0, 2)
-        .map(word => word.charAt(0).toUpperCase())
-        .join("") || "BT";
+      return (
+        words
+          .slice(0, 2)
+          .map(word => word.charAt(0).toUpperCase())
+          .join("") || "BT"
+      );
     }
 
     function formatPrice(price) {
@@ -737,46 +879,102 @@
     }
 
     function handleBuy(product) {
-      showToast(
-        `${product.name} selected. Order form will be connected next.`
+      if (!ORDER_FORM_URL) {
+        showToast(
+          `${product.name} selected. Order form will be connected next.`
+        );
+
+        return;
+      }
+
+      const orderUrl = new URL(ORDER_FORM_URL);
+
+      orderUrl.searchParams.set(
+        "product",
+        product.name
       );
+
+      orderUrl.searchParams.set(
+        "price",
+        String(product.price)
+      );
+
+      window.location.href = orderUrl.toString();
+    }
+
+    function createProductVisual(product) {
+      const imageWrap = document.createElement("div");
+      imageWrap.className = "product-image-wrap";
+
+      let visual;
+
+      if (
+        product.image &&
+        String(product.image).trim() !== ""
+      ) {
+        visual = document.createElement("img");
+        visual.className = "product-image";
+        visual.src = product.image;
+        visual.alt = `${product.name} thumbnail`;
+        visual.loading = "lazy";
+        visual.decoding = "async";
+        visual.referrerPolicy = "no-referrer";
+
+        visual.addEventListener("error", () => {
+          const fallback = document.createElement("div");
+          fallback.className = "product-image-fallback";
+          fallback.textContent = getInitials(product.name);
+          fallback.setAttribute("aria-hidden", "true");
+
+          visual.replaceWith(fallback);
+        });
+      } else {
+        visual = document.createElement("div");
+        visual.className = "product-image-fallback";
+        visual.textContent = getInitials(product.name);
+        visual.setAttribute("aria-hidden", "true");
+      }
+
+      const available = Number(product.stock) > 0;
+
+      const stockBadge = document.createElement("span");
+
+      stockBadge.className =
+        `stock-badge${available ? "" : " out"}`;
+
+      stockBadge.textContent = available
+        ? `${product.stock} in stock`
+        : "Out of stock";
+
+      imageWrap.append(visual, stockBadge);
+
+      return imageWrap;
     }
 
     function createProductCard(product, index) {
       const card = document.createElement("article");
       card.className = "product-card";
-      card.style.animationDelay = `${Math.min(index * 70, 350)}ms`;
 
-      const top = document.createElement("div");
-      top.className = "product-top";
+      card.style.animationDelay =
+        `${Math.min(index * 65, 325)}ms`;
 
-      const logo = document.createElement("div");
-      logo.className = "product-logo";
-      logo.textContent = getInitials(product.name);
-      logo.setAttribute("aria-hidden", "true");
+      const imageWrap = createProductVisual(product);
 
-      const stockBadge = document.createElement("span");
-      const isAvailable = Number(product.stock) > 0;
-
-      stockBadge.className =
-        `stock-badge${isAvailable ? "" : " out"}`;
-
-      stockBadge.textContent = isAvailable
-        ? `${product.stock} in stock`
-        : "Out of stock";
-
-      top.append(logo, stockBadge);
+      const content = document.createElement("div");
+      content.className = "product-content";
 
       const name = document.createElement("h3");
       name.className = "product-name";
       name.textContent = product.name;
 
+      const available = Number(product.stock) > 0;
+
       const meta = document.createElement("p");
       meta.className = "product-meta";
-      meta.textContent =
-        isAvailable
-          ? "Available now for purchase."
-          : "Currently unavailable.";
+
+      meta.textContent = available
+        ? "Available now for purchase."
+        : "Currently unavailable.";
 
       const divider = document.createElement("div");
       divider.className = "product-divider";
@@ -799,8 +997,11 @@
       const buyButton = document.createElement("button");
       buyButton.className = "buy-button";
       buyButton.type = "button";
-      buyButton.disabled = !isAvailable;
-      buyButton.textContent = isAvailable ? "Buy Now" : "Unavailable";
+      buyButton.disabled = !available;
+
+      buyButton.textContent = available
+        ? "Buy Now"
+        : "Unavailable";
 
       buyButton.addEventListener("click", () => {
         handleBuy(product);
@@ -808,7 +1009,14 @@
 
       bottom.append(priceWrap, buyButton);
 
-      card.append(top, name, meta, divider, bottom);
+      content.append(
+        name,
+        meta,
+        divider,
+        bottom
+      );
+
+      card.append(imageWrap, content);
 
       return card;
     }
@@ -816,10 +1024,16 @@
     function renderProducts(products) {
       productGrid.replaceChildren();
 
-      if (!Array.isArray(products) || products.length === 0) {
+      if (
+        !Array.isArray(products) ||
+        products.length === 0
+      ) {
         const empty = document.createElement("div");
         empty.className = "empty-state";
-        empty.textContent = "No products are available right now.";
+
+        empty.textContent =
+          "No products are available right now.";
+
         productGrid.appendChild(empty);
       } else {
         products.forEach((product, index) => {
@@ -833,6 +1047,19 @@
       productGrid.hidden = false;
     }
 
+    function showLoadingError() {
+      loading.hidden = true;
+      productGrid.hidden = false;
+
+      const empty = document.createElement("div");
+      empty.className = "empty-state";
+
+      empty.textContent =
+        "Products could not be loaded. Please refresh the page.";
+
+      productGrid.replaceChildren(empty);
+    }
+
     async function loadProducts() {
       try {
         const response = await fetch("/api/products", {
@@ -840,34 +1067,37 @@
         });
 
         if (!response.ok) {
-          throw new Error(`API returned ${response.status}`);
+          throw new Error(
+            `Product API returned ${response.status}`
+          );
         }
 
         const data = await response.json();
 
-        if (!data.success) {
-          throw new Error("Product API returned an error");
+        if (
+          !data.success ||
+          !Array.isArray(data.products)
+        ) {
+          throw new Error(
+            "Product API returned invalid data"
+          );
         }
 
         renderProducts(data.products);
       } catch (error) {
         console.error(error);
-
-        loading.hidden = true;
-        productGrid.hidden = false;
-
-        const empty = document.createElement("div");
-        empty.className = "empty-state";
-        empty.textContent =
-          "Products could not be loaded. Please refresh the page.";
-
-        productGrid.replaceChildren(empty);
+        showLoadingError();
       }
     }
 
     loadProducts();
 
+    /*
+      Website খোলা থাকলে প্রতি ৩০ সেকেন্ডে
+      price, stock এবং image refresh হবে।
+    */
     window.setInterval(loadProducts, 30000);
   </script>
 </body>
 </html>
+```
