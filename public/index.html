@@ -1108,7 +1108,7 @@
       Google Form তৈরি হওয়ার পরে quotation mark-এর
       ভিতরে form URL বসাবে।
     */
-    const ORDER_FORM_URL = "";
+   const ORDER_FORM_URL = "https://forms.gle/PsubSY9Fip717Ru1A";
 
     const productGrid =
       document.getElementById("productGrid");
@@ -1161,31 +1161,7 @@
         }, 2800);
     }
 
-    function handleBuy(product) {
-      if (!ORDER_FORM_URL) {
-        showToast(
-          `${product.name} selected. Order form will be connected next.`
-        );
-
-        return;
-      }
-
-      const orderUrl =
-        new URL(ORDER_FORM_URL);
-
-      orderUrl.searchParams.set(
-        "product",
-        product.name
-      );
-
-      orderUrl.searchParams.set(
-        "price",
-        String(product.price)
-      );
-
-      window.location.href =
-        orderUrl.toString();
-    }
+function handleBuy(product) { if (Number(product.stock) <= 0) { showToast("This product is currently unavailable."); return; } window.location.href = ORDER_FORM_URL; }
 
     function createFallback(productName) {
       const fallback =
