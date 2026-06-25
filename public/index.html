@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,10 +54,6 @@
       box-sizing: border-box;
     }
 
-    /*
-      Product load হওয়ার পরে loading skeleton যেন
-      display:grid-এর কারণে আর দেখা না যায়।
-    */
     [hidden] {
       display: none !important;
     }
@@ -126,9 +122,7 @@
       margin-inline: auto;
     }
 
-    /* =========================
-       Header
-    ========================= */
+    /* Header */
 
     .site-header {
       position: sticky;
@@ -196,7 +190,6 @@
     .nav-links {
       display: flex;
       align-items: center;
-
       gap: 5px;
     }
 
@@ -220,13 +213,10 @@
       background: var(--surface-soft);
     }
 
-    /* =========================
-       Hero
-    ========================= */
+    /* Hero */
 
     .hero {
       padding: 92px 0 62px;
-
       text-align: center;
     }
 
@@ -315,7 +305,6 @@
     .primary-link,
     .secondary-link {
       min-height: 49px;
-
       padding: 0 21px;
 
       display: inline-flex;
@@ -352,19 +341,15 @@
 
     .secondary-link {
       border: 1px solid var(--border);
-
       background: #ffffff;
     }
 
     .secondary-link:hover {
       transform: translateY(-2px);
-
       background: var(--surface-soft);
     }
 
-    /* =========================
-       Products section
-    ========================= */
+    /* Products */
 
     .products-section {
       padding: 34px 0 105px;
@@ -391,7 +376,6 @@
       margin: 8px 0 0;
 
       color: var(--text-soft);
-
       line-height: 1.6;
     }
 
@@ -430,13 +414,10 @@
       gap: 20px;
     }
 
-    /* =========================
-       Product card
-    ========================= */
+    /* Product card */
 
     .product-card {
       min-width: 0;
-
       overflow: hidden;
 
       border: 1px solid var(--border);
@@ -462,10 +443,6 @@
       box-shadow: var(--shadow-large);
     }
 
-    /*
-      Image container
-      Image যেকোনো resolution হলেও পুরোটা fit হবে।
-    */
     .product-image-wrap {
       position: relative;
 
@@ -490,10 +467,6 @@
         #ffffff;
     }
 
-    /*
-      absolute inset ব্যবহার করায় image কখনো
-      card-এর বাইরে যাবে না বা crop হবে না।
-    */
     .product-image {
       position: absolute;
 
@@ -509,8 +482,7 @@
 
       border-radius: 12px;
 
-      transition:
-        transform 250ms ease;
+      transition: transform 250ms ease;
     }
 
     .product-card:hover .product-image {
@@ -609,9 +581,7 @@
 
     .product-divider {
       height: 1px;
-
       margin: 21px 0;
-
       background: var(--border);
     }
 
@@ -642,7 +612,6 @@
 
     .buy-button {
       min-height: 46px;
-
       padding: 0 18px;
 
       border-radius: 12px;
@@ -680,9 +649,7 @@
       background: #edf0f4;
     }
 
-    /* =========================
-       Loading skeleton
-    ========================= */
+    /* Loading */
 
     .skeleton {
       min-height: 390px;
@@ -719,9 +686,7 @@
       line-height: 1.65;
     }
 
-    /* =========================
-       Support
-    ========================= */
+    /* Support */
 
     .support-section {
       padding: 0 0 95px;
@@ -758,13 +723,10 @@
       margin: 9px 0 0;
 
       color: var(--text-soft);
-
       line-height: 1.6;
     }
 
-    /* =========================
-       Footer
-    ========================= */
+    /* Footer */
 
     .site-footer {
       padding: 27px 0 38px;
@@ -785,9 +747,7 @@
       gap: 18px;
     }
 
-    /* =========================
-       Toast
-    ========================= */
+    /* Toast */
 
     .toast {
       position: fixed;
@@ -825,13 +785,10 @@
 
     .toast.show {
       opacity: 1;
-
       transform: translateY(0);
     }
 
-    /* =========================
-       Animations
-    ========================= */
+    /* Animations */
 
     @keyframes shimmer {
       to {
@@ -842,20 +799,16 @@
     @keyframes card-enter {
       from {
         opacity: 0;
-
         transform: translateY(14px);
       }
 
       to {
         opacity: 1;
-
         transform: translateY(0);
       }
     }
 
-    /* =========================
-       Tablet
-    ========================= */
+    /* Tablet */
 
     @media (max-width: 900px) {
       .product-grid,
@@ -874,9 +827,7 @@
       }
     }
 
-    /* =========================
-       Mobile
-    ========================= */
+    /* Mobile */
 
     @media (max-width: 620px) {
       .container {
@@ -930,7 +881,6 @@
       .product-grid,
       .loading-grid {
         grid-template-columns: 1fr;
-
         gap: 15px;
       }
 
@@ -944,7 +894,6 @@
 
       .product-image-wrap {
         height: 195px;
-
         padding: 20px;
       }
 
@@ -969,7 +918,6 @@
 
       .support-card {
         padding: 27px 21px;
-
         border-radius: 22px;
       }
 
@@ -978,9 +926,7 @@
       }
     }
 
-    /* =========================
-       Reduced motion
-    ========================= */
+    /* Reduced motion */
 
     @media (prefers-reduced-motion: reduce) {
       html {
@@ -1007,7 +953,6 @@
         aria-label="BUETian Tech Store home"
       >
         <span class="brand-mark">BT</span>
-
         <span>BUETian Tech Store</span>
       </a>
 
@@ -1037,7 +982,6 @@
       <div class="container">
         <div class="eyebrow">
           <span class="eyebrow-dot"></span>
-
           Live stock and updated prices
         </div>
 
@@ -1161,7 +1105,7 @@
 
   <script>
     /*
-      Google Form ready হলে quotation mark-এর
+      Google Form তৈরি হওয়ার পরে quotation mark-এর
       ভিতরে form URL বসাবে।
     */
     const ORDER_FORM_URL = "";
@@ -1205,7 +1149,6 @@
 
     function showToast(message) {
       toast.textContent = message;
-
       toast.classList.add("show");
 
       window.clearTimeout(
@@ -1483,10 +1426,6 @@
         );
       }
 
-      /*
-        Product load হওয়ার পর skeleton পুরো
-        লুকিয়ে যাবে এবং product grid দেখা যাবে।
-      */
       loading.hidden = true;
       productGrid.hidden = false;
     }
@@ -1538,21 +1477,16 @@
         renderProducts(data.products);
       } catch (error) {
         console.error(error);
-
         showLoadingError();
       }
     }
 
-    loadProducts();
-
     /*
-      Website খোলা থাকলে প্রতি ৩০ সেকেন্ডে
-      price, stock এবং image আবার update হবে।
+      Page প্রথমবার খোলা বা manually refresh করলে
+      শুধু একবার product data load হবে।
+      কোনো automatic 30-second refresh নেই।
     */
-    window.setInterval(
-      loadProducts,
-      30000
-    );
+    loadProducts();
   </script>
 </body>
 </html>
