@@ -1,0 +1,8 @@
+{
+  "name": "buetiantech",
+  "compatibility_date": "2026-06-25",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application"
+  }
+}
