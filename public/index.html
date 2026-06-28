@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +11,12 @@
 
   <meta
     name="description"
-    content="BUETian Tech Store — Premium digital products with live prices and stock."
+    content="BUETian Tech Store — Trusted digital products at affordable prices with live stock and responsive support."
   >
 
   <meta name="theme-color" content="#ffffff">
 
-  <title>BUETian Tech Store — Premium Digital Products</title>
+  <title>BUETian Tech Store — Trusted Digital Products</title>
 
   <style>
     :root {
@@ -35,10 +35,13 @@
       --primary-hover: #1d4ed8;
 
       --success: #15803d;
-      --success-background: #ecfdf3;
+      --success-light: #ecfdf3;
 
       --danger: #dc2626;
-      --danger-background: #fff1f2;
+      --danger-light: #fff1f2;
+
+      --whatsapp: #16a34a;
+      --whatsapp-hover: #15803d;
 
       --container-width: 1180px;
 
@@ -47,7 +50,7 @@
         0 5px 15px rgba(15, 23, 42, 0.04);
 
       --shadow-large:
-        0 18px 48px rgba(15, 23, 42, 0.1);
+        0 20px 50px rgba(15, 23, 42, 0.1);
     }
 
     * {
@@ -130,7 +133,7 @@
       z-index: 50;
 
       border-bottom:
-        1px solid rgba(231, 234, 240, 0.85);
+        1px solid rgba(231, 234, 240, 0.88);
 
       background: rgba(255, 255, 255, 0.9);
 
@@ -216,7 +219,7 @@
     /* Hero */
 
     .hero {
-      padding: 92px 0 62px;
+      padding: 92px 0 58px;
       text-align: center;
     }
 
@@ -233,7 +236,7 @@
       border-radius: 999px;
 
       color: #475467;
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.9);
 
       box-shadow: var(--shadow-small);
 
@@ -254,12 +257,12 @@
     }
 
     .hero h1 {
-      max-width: 830px;
+      max-width: 900px;
 
       margin: 0 auto;
 
       font-size: clamp(42px, 7vw, 76px);
-      line-height: 0.98;
+      line-height: 0.99;
       letter-spacing: -0.068em;
 
       text-wrap: balance;
@@ -280,7 +283,7 @@
     }
 
     .hero-description {
-      max-width: 650px;
+      max-width: 680px;
 
       margin: 25px auto 0;
 
@@ -303,7 +306,8 @@
     }
 
     .primary-link,
-    .secondary-link {
+    .secondary-link,
+    .whatsapp-button {
       min-height: 49px;
       padding: 0 21px;
 
@@ -349,10 +353,72 @@
       background: var(--surface-soft);
     }
 
+    /* Trust strip */
+
+    .trust-strip {
+      padding: 8px 0 62px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .trust-item {
+      padding: 19px;
+
+      display: flex;
+      align-items: flex-start;
+
+      gap: 13px;
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      background: rgba(255, 255, 255, 0.88);
+
+      box-shadow: var(--shadow-small);
+    }
+
+    .trust-icon {
+      width: 42px;
+      height: 42px;
+
+      flex: 0 0 auto;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 13px;
+
+      color: var(--primary);
+      background: #eff4ff;
+
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .trust-item h3 {
+      margin: 1px 0 5px;
+
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .trust-item p {
+      margin: 0;
+
+      color: var(--text-soft);
+
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
     /* Products */
 
     .products-section {
-      padding: 34px 0 105px;
+      padding: 30px 0 105px;
     }
 
     .section-heading {
@@ -477,8 +543,8 @@
 
       display: block;
 
-      object-fit: contain !important;
-      object-position: center !important;
+      object-fit: contain;
+      object-position: center;
 
       border-radius: 12px;
 
@@ -541,19 +607,11 @@
       font-weight: 850;
 
       white-space: nowrap;
-
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
     }
 
     .stock-badge.out {
-      border-color:
-        rgba(220, 38, 38, 0.08);
-
       color: var(--danger);
-
-      background:
-        rgba(255, 241, 242, 0.96);
+      background: var(--danger-light);
     }
 
     .product-content {
@@ -693,13 +751,13 @@
     }
 
     .support-card {
-      padding: 36px;
+      padding: 38px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      gap: 24px;
+      gap: 28px;
 
       border: 1px solid var(--border);
       border-radius: 28px;
@@ -710,6 +768,8 @@
           rgba(245, 248, 255, 0.98),
           rgba(255, 255, 255, 0.98)
         );
+
+      box-shadow: var(--shadow-small);
     }
 
     .support-card h2 {
@@ -720,10 +780,53 @@
     }
 
     .support-card p {
+      max-width: 650px;
+
       margin: 9px 0 0;
 
       color: var(--text-soft);
-      line-height: 1.6;
+      line-height: 1.65;
+    }
+
+    .whatsapp-number {
+      display: inline-block;
+
+      margin-top: 13px;
+
+      color: var(--success);
+
+      font-size: 15px;
+      font-weight: 800;
+
+      transition:
+        color 180ms ease,
+        transform 180ms ease;
+    }
+
+    .whatsapp-number:hover {
+      color: #166534;
+      transform: translateY(-1px);
+    }
+
+    .whatsapp-button {
+      flex: 0 0 auto;
+
+      color: #ffffff;
+      background: var(--whatsapp);
+
+      white-space: nowrap;
+
+      box-shadow:
+        0 11px 26px rgba(22, 163, 74, 0.2);
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-2px);
+
+      background: var(--whatsapp-hover);
+
+      box-shadow:
+        0 15px 32px rgba(22, 163, 74, 0.25);
     }
 
     /* Footer */
@@ -773,7 +876,6 @@
       font-weight: 700;
 
       opacity: 0;
-
       pointer-events: none;
 
       transform: translateY(14px);
@@ -817,6 +919,10 @@
           repeat(2, minmax(0, 1fr));
       }
 
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
       .hero {
         padding-top: 76px;
       }
@@ -856,7 +962,7 @@
       }
 
       .hero {
-        padding: 65px 0 48px;
+        padding: 64px 0 45px;
       }
 
       .hero h1 {
@@ -869,7 +975,8 @@
       }
 
       .primary-link,
-      .secondary-link {
+      .secondary-link,
+      .whatsapp-button {
         width: 100%;
       }
 
@@ -926,8 +1033,6 @@
       }
     }
 
-    /* Reduced motion */
-
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -960,17 +1065,11 @@
         class="nav-links"
         aria-label="Main navigation"
       >
-        <a
-          class="nav-link"
-          href="#products"
-        >
+        <a class="nav-link" href="#products">
           Products
         </a>
 
-        <a
-          class="nav-link"
-          href="#support"
-        >
+        <a class="nav-link" href="#support">
           Support
         </a>
       </nav>
@@ -982,20 +1081,20 @@
       <div class="container">
         <div class="eyebrow">
           <span class="eyebrow-dot"></span>
-          Live stock and updated prices
+          Trusted service · Live stock · Responsive support
         </div>
 
         <h1>
-          Premium digital tools.
-
+          Trusted digital products.
           <span class="gradient-text">
-            Simple pricing.
+            Affordable prices.
           </span>
         </h1>
 
         <p class="hero-description">
-          Explore useful digital products with live availability,
-          transparent prices and fast customer support.
+          Buy useful digital tools with confidence. We focus on
+          transparent pricing, reliable service and fast customer
+          support—without unnecessary complications.
         </p>
 
         <div class="hero-actions">
@@ -1016,6 +1115,49 @@
       </div>
     </section>
 
+    <section class="trust-strip">
+      <div class="container trust-grid">
+        <article class="trust-item">
+          <div class="trust-icon">✓</div>
+
+          <div>
+            <h3>Trusted Service</h3>
+
+            <p>
+              Clear communication and reliable support throughout
+              your order.
+            </p>
+          </div>
+        </article>
+
+        <article class="trust-item">
+          <div class="trust-icon">৳</div>
+
+          <div>
+            <h3>Affordable Pricing</h3>
+
+            <p>
+              Competitive prices with no hidden charges or confusing
+              fees.
+            </p>
+          </div>
+        </article>
+
+        <article class="trust-item">
+          <div class="trust-icon">⚡</div>
+
+          <div>
+            <h3>Fast Support</h3>
+
+            <p>
+              Get quick assistance through WhatsApp whenever you need
+              help.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section
       class="products-section"
       id="products"
@@ -1026,8 +1168,8 @@
             <h2>Available Products</h2>
 
             <p>
-              Prices and stock are updated directly
-              from our live inventory.
+              Prices and stock are updated directly from our live
+              inventory.
             </p>
           </div>
 
@@ -1067,16 +1209,29 @@
             </h2>
 
             <p>
-              Contact our support team for product
-              availability and order assistance.
+              Contact us directly on WhatsApp for product availability,
+              pricing details and order assistance.
             </p>
+
+            <a
+              id="whatsappNumberLink"
+              class="whatsapp-number"
+              href="https://wa.me/8801303417400"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp: +880 1303-417400
+            </a>
           </div>
 
           <a
-            class="primary-link"
-            href="#products"
+            id="whatsappButton"
+            class="whatsapp-button"
+            href="https://wa.me/8801303417400"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            View Products
+            Chat on WhatsApp
           </a>
         </div>
       </div>
@@ -1091,7 +1246,7 @@
       </span>
 
       <span>
-        Fast delivery · Live stock · Customer support
+        Trusted service · Affordable prices · Responsive support
       </span>
     </div>
   </footer>
@@ -1104,11 +1259,17 @@
   ></div>
 
   <script>
-    /*
-      Google Form তৈরি হওয়ার পরে quotation mark-এর
-      ভিতরে form URL বসাবে।
-    */
-   const ORDER_FORM_URL = "https://forms.gle/PsubSY9Fip717Ru1A";
+    const ORDER_FORM_URL =
+      "https://forms.gle/PsubSY9Fip717Ru1A";
+
+    const WHATSAPP_NUMBER =
+      "8801303417400";
+
+    const WHATSAPP_DISPLAY_NUMBER =
+      "+880 1303-417400";
+
+    const WHATSAPP_MESSAGE =
+      "Hello BUETian Tech Store, I need help with a product or order.";
 
     const productGrid =
       document.getElementById("productGrid");
@@ -1121,6 +1282,27 @@
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
+
+    function setupWhatsAppLinks() {
+      const whatsappLink =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${
+          encodeURIComponent(WHATSAPP_MESSAGE)
+        }`;
+
+      const numberLink =
+        document.getElementById("whatsappNumberLink");
+
+      const button =
+        document.getElementById("whatsappButton");
+
+      numberLink.href = whatsappLink;
+      button.href = whatsappLink;
+
+      numberLink.textContent =
+        `WhatsApp: ${WHATSAPP_DISPLAY_NUMBER}`;
+    }
+
+    setupWhatsAppLinks();
 
     function getInitials(name) {
       const words = String(name || "")
@@ -1161,7 +1343,18 @@
         }, 2800);
     }
 
-function handleBuy(product) { if (Number(product.stock) <= 0) { showToast("This product is currently unavailable."); return; } window.location.href = ORDER_FORM_URL; }
+    function handleBuy(product) {
+      if (Number(product.stock) <= 0) {
+        showToast(
+          "This product is currently unavailable."
+        );
+
+        return;
+      }
+
+      window.location.href =
+        ORDER_FORM_URL;
+    }
 
     function createFallback(productName) {
       const fallback =
@@ -1208,6 +1401,7 @@ function handleBuy(product) { if (Number(product.stock) <= 0) { showToast("This 
 
         visual.loading = "lazy";
         visual.decoding = "async";
+        visual.referrerPolicy = "no-referrer";
 
         visual.addEventListener(
           "error",
@@ -1457,13 +1651,8 @@ function handleBuy(product) { if (Number(product.stock) <= 0) { showToast("This 
       }
     }
 
-    /*
-      Page প্রথমবার খোলা বা manually refresh করলে
-      শুধু একবার product data load হবে।
-      কোনো automatic 30-second refresh নেই।
-    */
     loadProducts();
   </script>
 </body>
 </html>
-
+```
