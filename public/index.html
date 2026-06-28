@@ -1,28 +1,37 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-
+  <meta charset="UTF-8" />
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1, viewport-fit=cover"
-  >
-
+  />
   <meta
     name="description"
     content="BUETian Tech Store — Trusted digital products at affordable prices with live stock and responsive support."
-  >
-
-  <meta name="theme-color" content="#ffffff">
+  />
+  <meta id="themeColor" name="theme-color" content="#ffffff" />
 
   <title>BUETian Tech Store — Trusted Digital Products</title>
+
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("buetian-theme");
+        document.documentElement.dataset.theme =
+          savedTheme === "dark" ? "dark" : "light";
+      } catch {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
 
   <style>
     :root {
       --background: #ffffff;
       --surface: #ffffff;
       --surface-soft: #f7f8fb;
+      --surface-elevated: #ffffff;
 
       --text: #101828;
       --text-soft: #667085;
@@ -46,6 +55,10 @@
       --whatsapp: #16a34a;
       --whatsapp-hover: #15803d;
 
+      --header-background: rgba(255, 255, 255, 0.9);
+      --hero-glow: rgba(37, 99, 235, 0.075);
+      --image-background: #ffffff;
+
       --container-width: 1180px;
 
       --shadow-small:
@@ -54,6 +67,45 @@
 
       --shadow-large:
         0 20px 50px rgba(15, 23, 42, 0.1);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+
+      --background: #080f1c;
+      --surface: #111827;
+      --surface-soft: #172033;
+      --surface-elevated: #111827;
+
+      --text: #f8fafc;
+      --text-soft: #cbd5e1;
+      --text-light: #94a3b8;
+
+      --border: #263449;
+      --border-hover: #3b4b64;
+
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+
+      --success: #4ade80;
+      --success-light: #0d2e20;
+
+      --danger: #f87171;
+      --danger-light: #39171c;
+
+      --discount-text: #fca5a5;
+      --discount-background: #3a171b;
+
+      --header-background: rgba(8, 15, 28, 0.9);
+      --hero-glow: rgba(59, 130, 246, 0.14);
+      --image-background: #0f172a;
+
+      --shadow-small:
+        0 1px 2px rgba(0, 0, 0, 0.22),
+        0 8px 22px rgba(0, 0, 0, 0.16);
+
+      --shadow-large:
+        0 22px 55px rgba(0, 0, 0, 0.38);
     }
 
     * {
@@ -77,7 +129,7 @@
       background:
         radial-gradient(
           circle at 50% -8%,
-          rgba(37, 99, 235, 0.075),
+          var(--hero-glow),
           transparent 35rem
         ),
         var(--background);
@@ -92,6 +144,10 @@
 
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+
+      transition:
+        color 220ms ease,
+        background-color 220ms ease;
     }
 
     img {
@@ -119,28 +175,24 @@
     }
 
     .container {
-      width: min(
-        calc(100% - 32px),
-        var(--container-width)
-      );
-
+      width: min(calc(100% - 32px), var(--container-width));
       margin-inline: auto;
     }
-
-    /* Header */
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 50;
 
-      border-bottom:
-        1px solid rgba(231, 234, 240, 0.88);
-
-      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid var(--border);
+      background: var(--header-background);
 
       backdrop-filter: blur(17px);
       -webkit-backdrop-filter: blur(17px);
+
+      transition:
+        border-color 220ms ease,
+        background-color 220ms ease;
     }
 
     .navbar {
@@ -156,7 +208,6 @@
     .brand {
       display: inline-flex;
       align-items: center;
-
       gap: 11px;
 
       font-size: 20px;
@@ -174,22 +225,21 @@
       place-items: center;
 
       border-radius: 13px;
-
       color: #ffffff;
 
-      background:
-        linear-gradient(
-          135deg,
-          #111827,
-          #2563eb
-        );
+      background: linear-gradient(135deg, #111827, #2563eb);
 
-      box-shadow:
-        0 9px 24px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 9px 24px rgba(37, 99, 235, 0.2);
 
       font-size: 15px;
       font-weight: 900;
       letter-spacing: -0.04em;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .nav-links {
@@ -200,7 +250,6 @@
 
     .nav-link {
       padding: 9px 13px;
-
       border-radius: 10px;
 
       color: var(--text-soft);
@@ -218,7 +267,45 @@
       background: var(--surface-soft);
     }
 
-    /* Hero */
+    .theme-toggle {
+      min-height: 42px;
+      padding: 0 14px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      color: var(--text);
+      background: var(--surface);
+
+      box-shadow: var(--shadow-small);
+
+      font-size: 13px;
+      font-weight: 800;
+
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease,
+        background-color 180ms ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      border-color: var(--border-hover);
+      background: var(--surface-soft);
+    }
+
+    .theme-icon {
+      font-size: 16px;
+      line-height: 1;
+    }
 
     .hero {
       padding: 92px 0 58px;
@@ -228,7 +315,6 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
-
       gap: 9px;
 
       margin-bottom: 22px;
@@ -237,8 +323,8 @@
       border: 1px solid var(--border);
       border-radius: 999px;
 
-      color: #475467;
-      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-soft);
+      background: var(--surface);
 
       box-shadow: var(--shadow-small);
 
@@ -254,13 +340,11 @@
 
       background: #22c55e;
 
-      box-shadow:
-        0 0 0 5px rgba(34, 197, 94, 0.13);
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.13);
     }
 
     .hero h1 {
       max-width: 900px;
-
       margin: 0 auto;
 
       font-size: clamp(42px, 7vw, 76px);
@@ -273,12 +357,7 @@
     .gradient-text {
       color: transparent;
 
-      background:
-        linear-gradient(
-          135deg,
-          #2563eb,
-          #7c3aed
-        );
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
 
       background-clip: text;
       -webkit-background-clip: text;
@@ -286,7 +365,6 @@
 
     .hero-description {
       max-width: 680px;
-
       margin: 25px auto 0;
 
       color: var(--text-soft);
@@ -325,6 +403,8 @@
       transition:
         transform 180ms ease,
         box-shadow 180ms ease,
+        color 180ms ease,
+        border-color 180ms ease,
         background-color 180ms ease;
     }
 
@@ -332,30 +412,29 @@
       color: #ffffff;
       background: var(--text);
 
-      box-shadow:
-        0 11px 28px rgba(17, 24, 39, 0.18);
+      box-shadow: 0 11px 28px rgba(17, 24, 39, 0.18);
+    }
+
+    html[data-theme="dark"] .primary-link {
+      background: var(--primary);
     }
 
     .primary-link:hover {
       transform: translateY(-2px);
+      background: var(--primary-hover);
 
-      background: #000000;
-
-      box-shadow:
-        0 16px 34px rgba(17, 24, 39, 0.22);
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.22);
     }
 
     .secondary-link {
       border: 1px solid var(--border);
-      background: #ffffff;
+      background: var(--surface);
     }
 
     .secondary-link:hover {
       transform: translateY(-2px);
       background: var(--surface-soft);
     }
-
-    /* Trust section */
 
     .trust-strip {
       padding: 8px 0 62px;
@@ -372,15 +451,23 @@
 
       display: flex;
       align-items: flex-start;
-
       gap: 13px;
 
       border: 1px solid var(--border);
       border-radius: 18px;
 
-      background: rgba(255, 255, 255, 0.88);
-
+      background: var(--surface);
       box-shadow: var(--shadow-small);
+
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background-color 220ms ease;
+    }
+
+    .trust-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-hover);
     }
 
     .trust-icon {
@@ -401,6 +488,11 @@
       font-weight: 900;
     }
 
+    html[data-theme="dark"] .trust-icon {
+      color: #93c5fd;
+      background: #172554;
+    }
+
     .trust-item h3 {
       margin: 1px 0 5px;
 
@@ -416,8 +508,6 @@
       font-size: 13px;
       line-height: 1.55;
     }
-
-    /* Products section */
 
     .products-section {
       padding: 30px 0 105px;
@@ -450,7 +540,6 @@
     .live-status {
       display: inline-flex;
       align-items: center;
-
       gap: 8px;
 
       color: var(--text-soft);
@@ -468,21 +557,15 @@
       height: 8px;
 
       border-radius: 50%;
-
       background: #22c55e;
     }
 
     .product-grid,
     .loading-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
-
-    /* Product card */
 
     .product-card {
       min-width: 0;
@@ -491,8 +574,7 @@
       border: 1px solid var(--border);
       border-radius: 24px;
 
-      background: rgba(255, 255, 255, 0.97);
-
+      background: var(--surface);
       box-shadow: var(--shadow-small);
 
       animation: card-enter 460ms both;
@@ -500,14 +582,13 @@
       transition:
         transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
         border-color 220ms ease,
-        box-shadow 220ms ease;
+        box-shadow 220ms ease,
+        background-color 220ms ease;
     }
 
     .product-card:hover {
       transform: translateY(-6px);
-
       border-color: var(--border-hover);
-
       box-shadow: var(--shadow-large);
     }
 
@@ -521,7 +602,6 @@
       justify-content: center;
 
       overflow: hidden;
-
       padding: 22px;
 
       border-bottom: 1px solid var(--border);
@@ -529,10 +609,10 @@
       background:
         radial-gradient(
           circle at 50% 45%,
-          rgba(37, 99, 235, 0.075),
+          var(--hero-glow),
           transparent 68%
         ),
-        #ffffff;
+        var(--image-background);
     }
 
     .product-image {
@@ -568,15 +648,9 @@
 
       color: #ffffff;
 
-      background:
-        linear-gradient(
-          135deg,
-          #2563eb,
-          #7c3aed
-        );
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
 
-      box-shadow:
-        0 14px 35px rgba(37, 99, 235, 0.21);
+      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.21);
 
       font-size: 24px;
       font-weight: 900;
@@ -592,18 +666,13 @@
 
       padding: 7px 10px;
 
-      border:
-        1px solid rgba(21, 128, 61, 0.09);
-
+      border: 1px solid rgba(21, 128, 61, 0.09);
       border-radius: 999px;
 
       color: var(--success);
+      background: var(--success-light);
 
-      background:
-        rgba(236, 253, 243, 0.96);
-
-      box-shadow:
-        0 5px 16px rgba(15, 23, 42, 0.05);
+      box-shadow: 0 5px 16px rgba(15, 23, 42, 0.05);
 
       font-size: 12px;
       font-weight: 850;
@@ -642,6 +711,7 @@
     .product-divider {
       height: 1px;
       margin: 21px 0;
+
       background: var(--border);
     }
 
@@ -649,7 +719,6 @@
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-
       gap: 15px;
     }
 
@@ -672,7 +741,6 @@
       display: flex;
       align-items: baseline;
       flex-wrap: wrap;
-
       gap: 7px;
     }
 
@@ -710,7 +778,6 @@
 
     .saving-text {
       width: 100%;
-
       margin-top: 1px;
 
       color: var(--success);
@@ -742,25 +809,17 @@
 
     .buy-button:hover:not(:disabled) {
       transform: translateY(-2px);
-
       background: var(--primary-hover);
 
-      box-shadow:
-        0 11px 24px rgba(37, 99, 235, 0.24);
-    }
-
-    .buy-button:active:not(:disabled) {
-      transform: translateY(0);
+      box-shadow: 0 11px 24px rgba(37, 99, 235, 0.24);
     }
 
     .buy-button:disabled {
       cursor: not-allowed;
 
-      color: #98a2b3;
-      background: #edf0f4;
+      color: var(--text-light);
+      background: var(--surface-soft);
     }
-
-    /* Loading */
 
     .skeleton {
       min-height: 390px;
@@ -771,15 +830,14 @@
       background:
         linear-gradient(
           100deg,
-          #f3f4f6 20%,
-          #fafafa 35%,
-          #f3f4f6 50%
+          var(--surface-soft) 20%,
+          var(--surface) 35%,
+          var(--surface-soft) 50%
         );
 
       background-size: 250% 100%;
 
-      animation:
-        shimmer 1.35s infinite linear;
+      animation: shimmer 1.35s infinite linear;
     }
 
     .empty-state {
@@ -787,7 +845,7 @@
 
       padding: 64px 24px;
 
-      border: 1px dashed #d7dce5;
+      border: 1px dashed var(--border);
       border-radius: 24px;
 
       color: var(--text-soft);
@@ -796,8 +854,6 @@
       text-align: center;
       line-height: 1.65;
     }
-
-    /* Support */
 
     .support-section {
       padding: 0 0 95px;
@@ -809,7 +865,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       gap: 28px;
 
       border: 1px solid var(--border);
@@ -818,8 +873,8 @@
       background:
         linear-gradient(
           135deg,
-          rgba(245, 248, 255, 0.98),
-          rgba(255, 255, 255, 0.98)
+          var(--surface-soft),
+          var(--surface)
         );
 
       box-shadow: var(--shadow-small);
@@ -834,7 +889,6 @@
 
     .support-card p {
       max-width: 650px;
-
       margin: 9px 0 0;
 
       color: var(--text-soft);
@@ -857,7 +911,6 @@
     }
 
     .whatsapp-number:hover {
-      color: #166534;
       transform: translateY(-1px);
     }
 
@@ -869,20 +922,15 @@
 
       white-space: nowrap;
 
-      box-shadow:
-        0 11px 26px rgba(22, 163, 74, 0.2);
+      box-shadow: 0 11px 26px rgba(22, 163, 74, 0.2);
     }
 
     .whatsapp-button:hover {
       transform: translateY(-2px);
-
       background: var(--whatsapp-hover);
 
-      box-shadow:
-        0 15px 32px rgba(22, 163, 74, 0.25);
+      box-shadow: 0 15px 32px rgba(22, 163, 74, 0.25);
     }
-
-    /* Footer */
 
     .site-footer {
       padding: 27px 0 38px;
@@ -903,8 +951,6 @@
       gap: 18px;
     }
 
-    /* Toast */
-
     .toast {
       position: fixed;
 
@@ -912,18 +958,17 @@
       bottom: 18px;
       z-index: 100;
 
-      max-width:
-        min(370px, calc(100vw - 36px));
+      max-width: min(370px, calc(100vw - 36px));
 
       padding: 13px 16px;
 
+      border: 1px solid var(--border);
       border-radius: 14px;
 
-      color: #ffffff;
-      background: #111827;
+      color: var(--text);
+      background: var(--surface-elevated);
 
-      box-shadow:
-        0 20px 50px rgba(15, 23, 42, 0.25);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
 
       font-size: 14px;
       font-weight: 700;
@@ -943,8 +988,6 @@
       transform: translateY(0);
     }
 
-    /* Animations */
-
     @keyframes shimmer {
       to {
         background-position-x: -250%;
@@ -963,13 +1006,10 @@
       }
     }
 
-    /* Tablet */
-
     @media (max-width: 900px) {
       .product-grid,
       .loading-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .trust-grid {
@@ -986,15 +1026,9 @@
       }
     }
 
-    /* Mobile */
-
     @media (max-width: 620px) {
       .container {
-        width:
-          min(
-            calc(100% - 22px),
-            var(--container-width)
-          );
+        width: min(calc(100% - 22px), var(--container-width));
       }
 
       .navbar {
@@ -1014,13 +1048,22 @@
         display: none;
       }
 
+      .theme-toggle {
+        width: 42px;
+        min-height: 42px;
+        padding: 0;
+      }
+
+      .theme-text {
+        display: none;
+      }
+
       .hero {
         padding: 64px 0 45px;
       }
 
       .hero h1 {
-        font-size:
-          clamp(40px, 14vw, 57px);
+        font-size: clamp(40px, 14vw, 57px);
       }
 
       .hero-description {
@@ -1076,10 +1119,6 @@
         font-size: 25px;
       }
 
-      .product-bottom {
-        align-items: flex-end;
-      }
-
       .buy-button {
         min-height: 44px;
         padding: 0 15px;
@@ -1125,27 +1164,28 @@
 <body>
   <header class="site-header">
     <div class="container navbar">
-      <a
-        class="brand"
-        href="/"
-        aria-label="BUETian Tech Store home"
-      >
+      <a class="brand" href="/" aria-label="BUETian Tech Store home">
         <span class="brand-mark">BT</span>
         <span>BUETian Tech Store</span>
       </a>
 
-      <nav
-        class="nav-links"
-        aria-label="Main navigation"
-      >
-        <a class="nav-link" href="#products">
-          Products
-        </a>
+      <div class="header-actions">
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-link" href="#products">Products</a>
+          <a class="nav-link" href="#support">Support</a>
+        </nav>
 
-        <a class="nav-link" href="#support">
-          Support
-        </a>
-      </nav>
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Turn on dark mode"
+          title="Change website theme"
+        >
+          <span id="themeIcon" class="theme-icon" aria-hidden="true">🌙</span>
+          <span id="themeText" class="theme-text">Dark</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -1159,31 +1199,18 @@
 
         <h1>
           Trusted digital products.
-          <span class="gradient-text">
-            Affordable prices.
-          </span>
+          <span class="gradient-text">Affordable prices.</span>
         </h1>
 
         <p class="hero-description">
-          Buy useful digital tools with confidence. We focus on
-          transparent pricing, reliable service and fast customer
-          support—without unnecessary complications.
+          Buy useful digital tools with confidence. We focus on transparent
+          pricing, reliable service and fast customer support—without
+          unnecessary complications.
         </p>
 
         <div class="hero-actions">
-          <a
-            class="primary-link"
-            href="#products"
-          >
-            Explore Products
-          </a>
-
-          <a
-            class="secondary-link"
-            href="#support"
-          >
-            Contact Support
-          </a>
+          <a class="primary-link" href="#products">Explore Products</a>
+          <a class="secondary-link" href="#support">Contact Support</a>
         </div>
       </div>
     </section>
@@ -1192,70 +1219,42 @@
       <div class="container trust-grid">
         <article class="trust-item">
           <div class="trust-icon">✓</div>
-
           <div>
             <h3>Trusted Service</h3>
-
-            <p>
-              Clear communication and reliable support throughout
-              your order.
-            </p>
+            <p>Clear communication and reliable support throughout your order.</p>
           </div>
         </article>
 
         <article class="trust-item">
           <div class="trust-icon">৳</div>
-
           <div>
             <h3>Affordable Pricing</h3>
-
-            <p>
-              Competitive prices with no hidden charges or confusing
-              fees.
-            </p>
+            <p>Competitive prices with no hidden charges or confusing fees.</p>
           </div>
         </article>
 
         <article class="trust-item">
           <div class="trust-icon">⚡</div>
-
           <div>
             <h3>Fast Support</h3>
-
-            <p>
-              Get quick assistance through WhatsApp whenever you need
-              help.
-            </p>
+            <p>Get quick assistance through WhatsApp whenever you need help.</p>
           </div>
         </article>
       </div>
     </section>
 
-    <section
-      class="products-section"
-      id="products"
-    >
+    <section class="products-section" id="products">
       <div class="container">
         <div class="section-heading">
           <div>
             <h2>Available Products</h2>
-
-            <p>
-              Prices and stock are updated directly from our live
-              inventory.
-            </p>
+            <p>Prices and stock are updated directly from our live inventory.</p>
           </div>
 
-          <div class="live-status">
-            Live inventory
-          </div>
+          <div class="live-status">Live inventory</div>
         </div>
 
-        <div
-          id="loading"
-          class="loading-grid"
-          aria-label="Loading products"
-        >
+        <div id="loading" class="loading-grid" aria-label="Loading products">
           <div class="skeleton"></div>
           <div class="skeleton"></div>
           <div class="skeleton"></div>
@@ -1270,16 +1269,11 @@
       </div>
     </section>
 
-    <section
-      class="support-section"
-      id="support"
-    >
+    <section class="support-section" id="support">
       <div class="container">
         <div class="support-card">
           <div>
-            <h2>
-              Need help before ordering?
-            </h2>
+            <h2>Need help before ordering?</h2>
 
             <p>
               Contact us directly on WhatsApp for product availability,
@@ -1313,66 +1307,88 @@
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <span>
-        © <span id="year"></span>
-        BUETian Tech Store
-      </span>
-
-      <span>
-        Trusted service · Affordable prices · Responsive support
-      </span>
+      <span>© <span id="year"></span> BUETian Tech Store</span>
+      <span>Trusted service · Affordable prices · Responsive support</span>
     </div>
   </footer>
 
-  <div
-    id="toast"
-    class="toast"
-    role="status"
-    aria-live="polite"
-  ></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <script>
-    const ORDER_FORM_URL =
-      "https://forms.gle/PsubSY9Fip717Ru1A";
+    const ORDER_FORM_URL = "https://forms.gle/PsubSY9Fip717Ru1A";
 
-    const WHATSAPP_NUMBER =
-      "8801303417400";
-
-    const WHATSAPP_DISPLAY_NUMBER =
-      "+880 1303-417400";
-
+    const WHATSAPP_NUMBER = "8801303417400";
+    const WHATSAPP_DISPLAY_NUMBER = "+880 1303-417400";
     const WHATSAPP_MESSAGE =
       "Hello BUETian Tech Store, I need help with a product or order.";
 
-    const productGrid =
-      document.getElementById("productGrid");
+    const productGrid = document.getElementById("productGrid");
+    const loading = document.getElementById("loading");
+    const toast = document.getElementById("toast");
 
-    const loading =
-      document.getElementById("loading");
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeText = document.getElementById("themeText");
+    const themeColor = document.getElementById("themeColor");
 
-    const toast =
-      document.getElementById("toast");
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    function updateThemeButton() {
+      const currentTheme =
+        document.documentElement.dataset.theme || "light";
+
+      const darkModeEnabled = currentTheme === "dark";
+
+      themeIcon.textContent = darkModeEnabled ? "☀️" : "🌙";
+      themeText.textContent = darkModeEnabled ? "Light" : "Dark";
+
+      themeToggle.setAttribute(
+        "aria-label",
+        darkModeEnabled ? "Turn on light mode" : "Turn on dark mode"
+      );
+
+      themeToggle.setAttribute(
+        "title",
+        darkModeEnabled ? "Switch to light mode" : "Switch to dark mode"
+      );
+
+      themeColor.setAttribute(
+        "content",
+        darkModeEnabled ? "#080f1c" : "#ffffff"
+      );
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const currentTheme =
+        document.documentElement.dataset.theme || "light";
+
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+      document.documentElement.dataset.theme = newTheme;
+
+      try {
+        localStorage.setItem("buetian-theme", newTheme);
+      } catch {
+        console.warn("Theme preference could not be saved.");
+      }
+
+      updateThemeButton();
+    });
+
+    updateThemeButton();
 
     function setupWhatsAppLinks() {
       const whatsappLink =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${
-          encodeURIComponent(WHATSAPP_MESSAGE)
-        }`;
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+          WHATSAPP_MESSAGE
+        )}`;
 
-      const numberLink =
-        document.getElementById("whatsappNumberLink");
-
-      const button =
-        document.getElementById("whatsappButton");
+      const numberLink = document.getElementById("whatsappNumberLink");
+      const button = document.getElementById("whatsappButton");
 
       numberLink.href = whatsappLink;
       button.href = whatsappLink;
-
-      numberLink.textContent =
-        `WhatsApp: ${WHATSAPP_DISPLAY_NUMBER}`;
+      numberLink.textContent = `WhatsApp: ${WHATSAPP_DISPLAY_NUMBER}`;
     }
 
     setupWhatsAppLinks();
@@ -1386,92 +1402,59 @@
       return (
         words
           .slice(0, 2)
-          .map(word =>
-            word.charAt(0).toUpperCase()
-          )
+          .map((word) => word.charAt(0).toUpperCase())
           .join("") || "BT"
       );
     }
 
     function formatPrice(price) {
-      return new Intl.NumberFormat(
-        "en-BD",
-        {
-          maximumFractionDigits: 0
-        }
-      ).format(Number(price) || 0);
+      return new Intl.NumberFormat("en-BD", {
+        maximumFractionDigits: 0
+      }).format(Number(price) || 0);
     }
 
     function showToast(message) {
       toast.textContent = message;
       toast.classList.add("show");
 
-      window.clearTimeout(
-        showToast.timer
-      );
+      window.clearTimeout(showToast.timer);
 
-      showToast.timer =
-        window.setTimeout(() => {
-          toast.classList.remove("show");
-        }, 2800);
+      showToast.timer = window.setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2800);
     }
 
     function handleBuy(product) {
       if (Number(product.stock) <= 0) {
-        showToast(
-          "This product is currently unavailable."
-        );
-
+        showToast("This product is currently unavailable.");
         return;
       }
 
-      window.location.href =
-        ORDER_FORM_URL;
+      window.location.href = ORDER_FORM_URL;
     }
 
     function createFallback(productName) {
-      const fallback =
-        document.createElement("div");
+      const fallback = document.createElement("div");
 
-      fallback.className =
-        "product-image-fallback";
-
-      fallback.textContent =
-        getInitials(productName);
-
-      fallback.setAttribute(
-        "aria-hidden",
-        "true"
-      );
+      fallback.className = "product-image-fallback";
+      fallback.textContent = getInitials(productName);
+      fallback.setAttribute("aria-hidden", "true");
 
       return fallback;
     }
 
     function createProductVisual(product) {
-      const imageWrap =
-        document.createElement("div");
-
-      imageWrap.className =
-        "product-image-wrap";
+      const imageWrap = document.createElement("div");
+      imageWrap.className = "product-image-wrap";
 
       let visual;
 
-      if (
-        product.image &&
-        String(product.image).trim() !== ""
-      ) {
-        visual =
-          document.createElement("img");
+      if (product.image && String(product.image).trim() !== "") {
+        visual = document.createElement("img");
 
-        visual.className =
-          "product-image";
-
-        visual.src =
-          String(product.image).trim();
-
-        visual.alt =
-          `${product.name} thumbnail`;
-
+        visual.className = "product-image";
+        visual.src = String(product.image).trim();
+        visual.alt = `${product.name} thumbnail`;
         visual.loading = "lazy";
         visual.decoding = "async";
         visual.referrerPolicy = "no-referrer";
@@ -1479,66 +1462,41 @@
         visual.addEventListener(
           "error",
           () => {
-            visual.replaceWith(
-              createFallback(product.name)
-            );
+            visual.replaceWith(createFallback(product.name));
           },
           { once: true }
         );
       } else {
-        visual =
-          createFallback(product.name);
+        visual = createFallback(product.name);
       }
 
-      const available =
-        Number(product.stock) > 0;
+      const available = Number(product.stock) > 0;
 
-      const stockBadge =
-        document.createElement("span");
+      const stockBadge = document.createElement("span");
 
-      stockBadge.className =
-        `stock-badge${available ? "" : " out"}`;
+      stockBadge.className = `stock-badge${available ? "" : " out"}`;
+      stockBadge.textContent = available
+        ? `${product.stock} in stock`
+        : "Out of stock";
 
-      stockBadge.textContent =
-        available
-          ? `${product.stock} in stock`
-          : "Out of stock";
-
-      imageWrap.append(
-        visual,
-        stockBadge
-      );
+      imageWrap.append(visual, stockBadge);
 
       return imageWrap;
     }
 
     function createPriceSection(product) {
-      const priceWrapper =
-        document.createElement("div");
+      const priceWrapper = document.createElement("div");
+      priceWrapper.className = "price-wrapper";
 
-      priceWrapper.className =
-        "price-wrapper";
+      const priceLabel = document.createElement("span");
+      priceLabel.className = "price-label";
+      priceLabel.textContent = "Price";
 
-      const priceLabel =
-        document.createElement("span");
+      const priceRow = document.createElement("div");
+      priceRow.className = "price-row";
 
-      priceLabel.className =
-        "price-label";
-
-      priceLabel.textContent =
-        "Price";
-
-      const priceRow =
-        document.createElement("div");
-
-      priceRow.className =
-        "price-row";
-
-      const currentPrice =
-        Number(product.price) || 0;
-
-      const oldPrice =
-        Number(product.old_price) || 0;
+      const currentPrice = Number(product.price) || 0;
+      const oldPrice = Number(product.old_price) || 0;
 
       const hasDiscount =
         oldPrice > 0 &&
@@ -1546,174 +1504,94 @@
         oldPrice > currentPrice;
 
       if (hasDiscount) {
-        const oldPriceElement =
-          document.createElement("span");
+        const oldPriceElement = document.createElement("span");
 
-        oldPriceElement.className =
-          "old-price";
+        oldPriceElement.className = "old-price";
+        oldPriceElement.textContent = `৳${formatPrice(oldPrice)}`;
 
-        oldPriceElement.textContent =
-          `৳${formatPrice(oldPrice)}`;
-
-        priceRow.appendChild(
-          oldPriceElement
-        );
+        priceRow.appendChild(oldPriceElement);
       }
 
-      const currentPriceElement =
-        document.createElement("span");
+      const currentPriceElement = document.createElement("span");
 
-      currentPriceElement.className =
-        "product-price";
+      currentPriceElement.className = "product-price";
+      currentPriceElement.textContent = `৳${formatPrice(currentPrice)}`;
 
-      currentPriceElement.textContent =
-        `৳${formatPrice(currentPrice)}`;
-
-      priceRow.appendChild(
-        currentPriceElement
-      );
+      priceRow.appendChild(currentPriceElement);
 
       if (hasDiscount) {
-        const discountPercentage =
-          Math.round(
-            ((oldPrice - currentPrice) / oldPrice) * 100
-          );
-
-        const discountBadge =
-          document.createElement("span");
-
-        discountBadge.className =
-          "discount-badge";
-
-        discountBadge.textContent =
-          `${discountPercentage}% OFF`;
-
-        priceRow.appendChild(
-          discountBadge
+        const discountPercentage = Math.round(
+          ((oldPrice - currentPrice) / oldPrice) * 100
         );
 
-        const savingText =
-          document.createElement("span");
+        const discountBadge = document.createElement("span");
 
-        savingText.className =
-          "saving-text";
+        discountBadge.className = "discount-badge";
+        discountBadge.textContent = `${discountPercentage}% OFF`;
 
+        priceRow.appendChild(discountBadge);
+
+        const savingText = document.createElement("span");
+
+        savingText.className = "saving-text";
         savingText.textContent =
           `Save ৳${formatPrice(oldPrice - currentPrice)}`;
 
-        priceRow.appendChild(
-          savingText
-        );
+        priceRow.appendChild(savingText);
       }
 
-      priceWrapper.append(
-        priceLabel,
-        priceRow
-      );
+      priceWrapper.append(priceLabel, priceRow);
 
       return priceWrapper;
     }
 
-    function createProductCard(
-      product,
-      index
-    ) {
-      const card =
-        document.createElement("article");
+    function createProductCard(product, index) {
+      const card = document.createElement("article");
 
-      card.className =
-        "product-card";
+      card.className = "product-card";
+      card.style.animationDelay = `${Math.min(index * 65, 325)}ms`;
 
-      card.style.animationDelay =
-        `${Math.min(index * 65, 325)}ms`;
+      const imageWrap = createProductVisual(product);
+      const content = document.createElement("div");
 
-      const imageWrap =
-        createProductVisual(product);
+      content.className = "product-content";
 
-      const content =
-        document.createElement("div");
+      const name = document.createElement("h3");
 
-      content.className =
-        "product-content";
+      name.className = "product-name";
+      name.textContent = product.name;
 
-      const name =
-        document.createElement("h3");
+      const available = Number(product.stock) > 0;
 
-      name.className =
-        "product-name";
+      const meta = document.createElement("p");
 
-      name.textContent =
-        product.name;
+      meta.className = "product-meta";
+      meta.textContent = available
+        ? "Available now for purchase."
+        : "Currently unavailable.";
 
-      const available =
-        Number(product.stock) > 0;
+      const divider = document.createElement("div");
+      divider.className = "product-divider";
 
-      const meta =
-        document.createElement("p");
+      const bottom = document.createElement("div");
+      bottom.className = "product-bottom";
 
-      meta.className =
-        "product-meta";
+      const priceSection = createPriceSection(product);
 
-      meta.textContent =
-        available
-          ? "Available now for purchase."
-          : "Currently unavailable.";
+      const buyButton = document.createElement("button");
 
-      const divider =
-        document.createElement("div");
+      buyButton.className = "buy-button";
+      buyButton.type = "button";
+      buyButton.disabled = !available;
+      buyButton.textContent = available ? "Buy Now" : "Unavailable";
 
-      divider.className =
-        "product-divider";
+      buyButton.addEventListener("click", () => {
+        handleBuy(product);
+      });
 
-      const bottom =
-        document.createElement("div");
-
-      bottom.className =
-        "product-bottom";
-
-      const priceSection =
-        createPriceSection(product);
-
-      const buyButton =
-        document.createElement("button");
-
-      buyButton.className =
-        "buy-button";
-
-      buyButton.type =
-        "button";
-
-      buyButton.disabled =
-        !available;
-
-      buyButton.textContent =
-        available
-          ? "Buy Now"
-          : "Unavailable";
-
-      buyButton.addEventListener(
-        "click",
-        () => {
-          handleBuy(product);
-        }
-      );
-
-      bottom.append(
-        priceSection,
-        buyButton
-      );
-
-      content.append(
-        name,
-        meta,
-        divider,
-        bottom
-      );
-
-      card.append(
-        imageWrap,
-        content
-      );
+      bottom.append(priceSection, buyButton);
+      content.append(name, meta, divider, bottom);
+      card.append(imageWrap, content);
 
       return card;
     }
@@ -1721,31 +1599,17 @@
     function renderProducts(products) {
       productGrid.replaceChildren();
 
-      if (
-        !Array.isArray(products) ||
-        products.length === 0
-      ) {
-        const empty =
-          document.createElement("div");
+      if (!Array.isArray(products) || products.length === 0) {
+        const empty = document.createElement("div");
 
-        empty.className =
-          "empty-state";
-
-        empty.textContent =
-          "No products are available right now.";
+        empty.className = "empty-state";
+        empty.textContent = "No products are available right now.";
 
         productGrid.appendChild(empty);
       } else {
-        products.forEach(
-          (product, index) => {
-            productGrid.appendChild(
-              createProductCard(
-                product,
-                index
-              )
-            );
-          }
-        );
+        products.forEach((product, index) => {
+          productGrid.appendChild(createProductCard(product, index));
+        });
       }
 
       loading.hidden = true;
@@ -1756,12 +1620,9 @@
       loading.hidden = true;
       productGrid.hidden = false;
 
-      const empty =
-        document.createElement("div");
+      const empty = document.createElement("div");
 
-      empty.className =
-        "empty-state";
-
+      empty.className = "empty-state";
       empty.textContent =
         "Products could not be loaded. Please refresh the page.";
 
@@ -1770,30 +1631,18 @@
 
     async function loadProducts() {
       try {
-        const response =
-          await fetch(
-            "/api/products",
-            {
-              cache: "no-store"
-            }
-          );
+        const response = await fetch("/api/products", {
+          cache: "no-store"
+        });
 
         if (!response.ok) {
-          throw new Error(
-            `Product API returned ${response.status}`
-          );
+          throw new Error(`Product API returned ${response.status}`);
         }
 
-        const data =
-          await response.json();
+        const data = await response.json();
 
-        if (
-          !data.success ||
-          !Array.isArray(data.products)
-        ) {
-          throw new Error(
-            "Product API returned invalid data"
-          );
+        if (!data.success || !Array.isArray(data.products)) {
+          throw new Error("Product API returned invalid data");
         }
 
         renderProducts(data.products);
@@ -1803,12 +1652,7 @@
       }
     }
 
-    /*
-      Page load বা manual refresh-এর সময়
-      শুধু একবার data load হবে।
-    */
     loadProducts();
   </script>
 </body>
 </html>
-
